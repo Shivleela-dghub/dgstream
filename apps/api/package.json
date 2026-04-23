@@ -9,11 +9,13 @@
     "lint": "eslint . --quiet"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^5.0.1",
+    "@emailjs/nodejs": "^5.0.2",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
     "express-rate-limit": "^8.3.1",
     "helmet": "^8.0.0",
+    "mongoose": "^9.5.0",
     "morgan": "^1.10.0",
     "nodemailer": "^8.0.5",
     "validator": "^13.11.0",
@@ -24,5 +26,10 @@
     "eslint": "^9.39.4",
     "eslint-plugin-import": "^2.32.0",
     "globals": "^15.14.0"
-  }
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

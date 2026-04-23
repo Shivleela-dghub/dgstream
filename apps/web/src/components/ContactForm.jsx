@@ -5,7 +5,8 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import apiServerClient from '@/lib/apiServerClient';
+import {SUBMIT_LEAD} from '@/utils/constant'
+import axios from 'axios';
 
 function ContactForm({ 
   inquiryType = 'healthcare', 
@@ -45,7 +46,7 @@ function ContactForm({
   };
 
   const healthcareClinicTypes = [
-    "Dental Clinic", "Dermatology", "IVF Center", "Hospital", 
+    "Dental Clinic", "IVF Center", "Hospital", 
     "Diagnostic Center", "Individual Practitioner", "Multi-Specialty Clinic", "Other"
   ];
 
@@ -123,7 +124,7 @@ function ContactForm({
         message: formData.message,
         ...(isHealthcare ? {
           clinicType: formData.clinicType,
-          lookingFor: formData.lookingFor
+          lookingFor: formData.lookingFor,
         } : {
           businessCategory: formData.businessCategory,
           businessModel: formData.businessModel,
@@ -131,27 +132,21 @@ function ContactForm({
           currentStage: formData.currentStage
         })
       };
-
-      const response = await apiServerClient.fetch('/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
+      console.log('Payload:', JSON.stringify(payload, null, 2));
+      const res = await axios.post(SUBMIT_LEAD,payload, {
+        withCredentials:true
       });
-
-      const data = await response.json();
-
-      if (!response.ok || data.success === false) {
-        throw new Error(data.message || 'Submission failed');
-      }
-
-      toast.success(`Thank you! We've sent a confirmation email to ${formData.email}. Our team will contact you within 24 hours.`);
-      
-      setFormData({
-        name: '', email: '', phone: '', clinicType: '', lookingFor: '',
-        businessCategory: '', businessModel: '', whereDoYouSell: '', currentStage: '', message: ''
-      });
+      console.log(res.data);
+if (res.data.success) {
+  console.log('Mail sent + DB saved');
+  toast.success(`Thank you! We've sent a confirmation email to ${formData.email}. Our team will contact you within 24 hours.`);
+  setFormData({
+    name: '', email: '', phone: '', clinicType: '', lookingFor: '',
+    businessCategory: '', businessModel: '', whereDoYouSell: '', currentStage: '', message: ''
+  });
+} else {
+  console.log('Failed:', res.data.error);
+}
     } catch (error) {
       console.error('Form submission error:', error);
       toast.error("Form submitted but email confirmation failed. Please check your email or contact us directly.");

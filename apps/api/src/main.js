@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import connectDB from "./utils/db.js"
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -10,6 +11,7 @@ import { errorMiddleware } from './middleware/error.js';
 import { globalRateLimit } from './middleware/global-rate-limit.js';
 import logger from './utils/logger.js';
 import { BodyLimit } from './constants/common.js';
+import leadRoutes from './routes/lead.js';
 
 const app = express();
 
@@ -64,7 +66,8 @@ app.use(helmet({
 // CORS protection - only allow specific origins
 app.use(cors({
 	origin: (origin, callback) => {
-		const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
+		// const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
+		const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 		if (!origin || allowedOrigins.includes(origin)) {
 			callback(null, true);
 		} else {
@@ -114,7 +117,11 @@ app.use((req, res, next) => {
 	next();
 });
 
+app.use('/api/lead', leadRoutes);
+console.log('Lead routes registered:', leadRoutes.stack.map(r => r.route?.path));
+
 app.use('/', routes());
+
 
 app.use(errorMiddleware);
 
@@ -125,6 +132,7 @@ app.use((req, res) => {
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
+	connectDB();
 	logger.info(`🚀 API Server running on http://localhost:${port}`);
 });
 
