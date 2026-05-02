@@ -3,7 +3,7 @@ import express from 'express';
 import { submitLead } from '../controllers/leadController.js';
 
 const router = express.Router();
-
+console.log('inside lead route');
 router.post('/', (req, res, next) => {
   console.log('✅ Lead route hit');
   next();

@@ -1,1 +1,1 @@
-export const SUBMIT_LEAD = "http://localhost:3001/api/lead";
+export const SUBMIT_LEAD = `${import.meta.env.VITE_API_URL}/api/lead`;

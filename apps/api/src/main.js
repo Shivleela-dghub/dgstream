@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import connectDB from "./utils/db.js"
@@ -11,7 +11,6 @@ import { errorMiddleware } from './middleware/error.js';
 import { globalRateLimit } from './middleware/global-rate-limit.js';
 import logger from './utils/logger.js';
 import { BodyLimit } from './constants/common.js';
-import leadRoutes from './routes/lead.js';
 
 const app = express();
 
@@ -66,8 +65,13 @@ app.use(helmet({
 // CORS protection - only allow specific origins
 app.use(cors({
 	origin: (origin, callback) => {
-		// const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
-		const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+		 //const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
+		 const allowedOrigins = [
+  		    'https://dgstream.in',
+  		    'https://www.dgstream.in',
+  		    'http://72.61.174.176:3000'
+		];
+		//const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
 		if (!origin || allowedOrigins.includes(origin)) {
 			callback(null, true);
 		} else {
@@ -81,7 +85,7 @@ app.use(cors({
 
 app.use(morgan('combined'));
 app.use(globalRateLimit);
-
+console.log('after globalratelimit');
 // Request size limits - prevent large payload attacks
 app.use(express.json({
 	limit: '10kb',
@@ -117,10 +121,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/api/lead', leadRoutes);
-console.log('Lead routes registered:', leadRoutes.stack.map(r => r.route?.path));
-
-app.use('/', routes());
+app.use('/api',routes());
 
 
 app.use(errorMiddleware);
