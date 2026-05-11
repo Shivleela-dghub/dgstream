@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import connectDB from "./utils/db.js"
 import cors from 'cors';
 import helmet from 'helmet';
@@ -11,8 +13,14 @@ import { errorMiddleware } from './middleware/error.js';
 import { globalRateLimit } from './middleware/global-rate-limit.js';
 import logger from './utils/logger.js';
 import { BodyLimit } from './constants/common.js';
+import leadRoutes from './routes/lead.js';
+console.log('leadRoutes:', !!leadRoutes);
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
+
+
 
 app.set('trust proxy', true);
 
@@ -88,11 +96,11 @@ app.use(globalRateLimit);
 console.log('after globalratelimit');
 // Request size limits - prevent large payload attacks
 app.use(express.json({
-	limit: '10kb',
+	limit: '50mb',
 }));
 app.use(express.urlencoded({ 
 	extended: true,
-	limit: '10kb',
+	limit: '50mb',
 }));
 
 // Request timeout configuration
@@ -104,9 +112,9 @@ app.use((req, res, next) => {
 
 // Content-Type validation for POST requests
 app.use((req, res, next) => {
-	if (req.method === 'POST') {
+	if (req.method === 'POST' || req.method === 'PUT') {
 		const contentType = req.get('Content-Type');
-		if (contentType && !['application/json', 'application/x-www-form-urlencoded'].some(ct => contentType.includes(ct))) {
+		if (contentType && !['application/json', 'application/x-www-form-urlencoded','multipart/form-data'].some(ct => contentType.includes(ct))) {
 			return res.status(400).json({ error: 'Invalid Content-Type. Only application/json and application/x-www-form-urlencoded are allowed.' });
 		}
 	}
@@ -115,14 +123,19 @@ app.use((req, res, next) => {
 
 // Disable unnecessary HTTP methods
 app.use((req, res, next) => {
-	if (!['GET', 'POST', 'OPTIONS'].includes(req.method)) {
+	if (!['GET', 'POST', 'PUT','DELETE','OPTIONS'].includes(req.method)) {
 		return res.status(405).json({ error: 'Method not allowed' });
 	}
 	next();
 });
 
+//file-uploads
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
+
+app.use('/api/lead', leadRoutes);
 app.use('/api',routes());
 
+app.use('/api', routes());
 
 app.use(errorMiddleware);
 

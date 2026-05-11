@@ -11,9 +11,9 @@ function BlogCard({ blog }) {
 
   return (
     <Card className="h-full bg-card border-border shadow-sm hover:shadow-premium-hover transition-all duration-300 overflow-hidden flex flex-col group">
-      <Link to={`/blog/${blog.slug}`} className="relative h-56 overflow-hidden block">
+      <Link to={`/blog/${blog._id}`} className="relative h-56 overflow-hidden block">
         <img 
-          src={blog.featuredImage} 
+          src={blog.coverImage} 
           alt={blog.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
@@ -29,7 +29,7 @@ function BlogCard({ blog }) {
         <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4 font-medium">
           <div className="flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5" />
-            {format(new Date(blog.publishDate), 'MMM dd, yyyy')}
+            {format(new Date(blog.createdAt), 'MMM dd, yyyy')}
           </div>
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5" />
@@ -37,14 +37,14 @@ function BlogCard({ blog }) {
           </div>
         </div>
         
-        <Link to={`/blog/${blog.slug}`} className="block mb-3">
+        <Link to={`/blog/${blog._id}`} className="block mb-3">
           <h3 className={`text-xl font-bold text-foreground transition-colors duration-300 line-clamp-2 ${hoverColor}`}>
             {blog.title}
           </h3>
         </Link>
         
         <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3 flex-1">
-          {blog.excerpt}
+          {blog.content}
         </p>
         
         <div className="mt-auto flex items-center justify-between pt-4 border-t border-border">
@@ -52,7 +52,7 @@ function BlogCard({ blog }) {
             By {blog.author}
           </span>
           <Link 
-            to={`/blog/${blog.slug}`} 
+            to={`/blog/${blog._id}`} 
             className={`inline-flex items-center text-sm font-bold transition-colors ${isHealthcare ? 'text-healthcare hover:text-healthcare-dark' : 'text-retail hover:text-retail-dark'}`}
           >
             Read More
