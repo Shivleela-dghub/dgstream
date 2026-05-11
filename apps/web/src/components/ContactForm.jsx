@@ -5,9 +5,9 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import {SUBMIT_LEAD} from '@/utils/constant'
+import {SUBMIT_LEAD} from '@/utils/constant.js'
 import axios from 'axios';
-
+console.log(`${SUBMIT_LEAD}`);
 function ContactForm({ 
   inquiryType = 'healthcare', 
   fieldLabels = {},
@@ -97,7 +97,7 @@ function ContactForm({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    console.log("Inside handlesubmit")
     if (!formData.name || !formData.email || !formData.phone) {
       toast.error('Please fill in your name, email, and phone number.');
       return;
@@ -114,10 +114,10 @@ function ContactForm({
     }
 
     setIsSubmitting(true);
-
+	console.log('above try');
     try {
       const payload = {
-        industryType: inquiryType, // Map inquiryType to backend's expected industryType
+        inquiryType: inquiryType, // Map inquiryType to backend's expected industryType
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
@@ -132,12 +132,15 @@ function ContactForm({
           currentStage: formData.currentStage
         })
       };
-      console.log('Payload:', JSON.stringify(payload, null, 2));
-      const res = await axios.post(SUBMIT_LEAD,payload, {
+	
+      console.log('Payload:', JSON.stringify(payload, null, 2));      
+      const response = await axios.post(`${SUBMIT_LEAD}`,payload, {
         withCredentials:true
       });
-      console.log(res.data);
-if (res.data.success) {
+console.log("Full response:", response);  
+console.log("Full response data:", response.data);  
+      console.log(response.data);
+if (response.data?.success) {
   console.log('Mail sent + DB saved');
   toast.success(`Thank you! We've sent a confirmation email to ${formData.email}. Our team will contact you within 24 hours.`);
   setFormData({
@@ -145,10 +148,12 @@ if (res.data.success) {
     businessCategory: '', businessModel: '', whereDoYouSell: '', currentStage: '', message: ''
   });
 } else {
-  console.log('Failed:', res.data.error);
+  console.log('Failed:', response.data.error);
 }
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('Form submission error:', error.message);
+      console.error("Error response:", error.response);
+      console.error("Error response data:", error.response?.data);
       toast.error("Form submitted but email confirmation failed. Please check your email or contact us directly.");
     } finally {
       setIsSubmitting(false);

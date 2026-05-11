@@ -40,7 +40,7 @@ export default () => {
   if (!authRouter) throw new Error('authRouter is undefined');
 
   router.get('/health', healthCheck);
-  router.use('/contact', contactRouter);
+  router.use('/contact',contactRouter);
   router.use('/test-email', testEmailRouter);
   router.use('/blogs', blogRouter);          
   router.use('/auth', authRouter);          

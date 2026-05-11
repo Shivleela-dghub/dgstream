@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import path from 'path';
@@ -71,28 +71,29 @@ app.use(helmet({
 }));
 
 // CORS protection - only allow specific origins
-//should be removed before taking live
-app.use(cors());
-//should be uncommented
-//app.use(cors({
-//	origin:true,
-	//origin: (origin, callback) => {
-		// const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
-		// const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
-		// if (!origin || allowedOrigins.includes(origin)) {
-		// 	callback(null, true);
-		// } else {
-		// 	callback(new Error('CORS not allowed'), false);
-		// }
-	//},
-// 	credentials: true,
-// 	methods: ['GET', 'POST','PUT','DELETE'],
-// 	allowedHeaders: ['Content-Type','Authorization'],
-// }));
+app.use(cors({
+	origin: (origin, callback) => {
+		 //const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
+		 const allowedOrigins = [
+  		    'https://dgstream.in',
+  		    'https://www.dgstream.in',
+  		    'http://72.61.174.176:3000'
+		];
+		//const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+		if (!origin || allowedOrigins.includes(origin)) {
+			callback(null, true);
+		} else {
+			callback(new Error('CORS not allowed'), false);
+		}
+	},
+	credentials: true,
+	methods: ['GET', 'POST'],
+	allowedHeaders: ['Content-Type'],
+}));
 
 app.use(morgan('combined'));
 app.use(globalRateLimit);
-
+console.log('after globalratelimit');
 // Request size limits - prevent large payload attacks
 app.use(express.json({
 	limit: '50mb',
@@ -132,6 +133,7 @@ app.use((req, res, next) => {
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/lead', leadRoutes);
+app.use('/api',routes());
 
 app.use('/api', routes());
 

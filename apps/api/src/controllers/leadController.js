@@ -2,19 +2,19 @@ import Lead from '../models/Lead.js';
 import { sendLeadEmail } from '../utils/sendMail.js';
 
 export const submitLead = async (req, res) => {
-  
-  const { name, email, phone, industryType, message, ...rest } = req.body;
+  console.log(req.body);
+  const { name, email, phone,inquiryType, message, ...rest } = req.body;
   // Validate common fields
-  if (!name || !email || !phone || !industryType) {
+  if (!name || !email || !phone || !inquiryType) {
     return res.status(400).json({ success: false, error: 'All fields required' });
   }
 
   // Validate conditionally
-  if (industryType === 'healthcare') {
+  if (inquiryType === 'healthcare') {
     if (!rest.clinicType || !rest.lookingFor) {
       return res.status(400).json({ success: false, error: 'All healthcare fields required' });
     }
-  } else if (industryType === 'retail') {
+  } else if (inquiryType === 'retail') {
     if (!rest.businessCategory || !rest.businessModel || !rest.whereDoYouSell || !rest.currentStage) {
       return res.status(400).json({ success: false, error: 'All retail fields required' });
     }
@@ -25,7 +25,7 @@ export const submitLead = async (req, res) => {
       name, 
       email, 
       phone, 
-      industryType, 
+      inquiryType, 
       message,
       ...rest  // spreads clinic_type, service OR businessCategory, businessModel, etc.
     });

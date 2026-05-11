@@ -18,19 +18,20 @@ transporter.verify((err, success) => {
 
 // Email 1 — Notify you
 const sendLeadNotification = async (lead) => {
-  const isHealthcare = lead.industryType === 'healthcare';
+  const isHealthcare = lead.inquiryType === 'healthcare';
+console.log(isHealthcare);
 
   await transporter.sendMail({
     from: `"Lead Form" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_TO,
-    subject: `New Lead - ${lead.name} (${lead.industryType})`,
+    subject: `New Lead - ${lead.name} (${lead.inquiryType})`,
     html: `
       <h2>New Lead Received</h2>
       <table border="1" cellpadding="8" cellspacing="0">
         <tr><td><b>Name</b></td><td>${lead.name}</td></tr>
         <tr><td><b>Email</b></td><td>${lead.email}</td></tr>
         <tr><td><b>Phone</b></td><td>${lead.phone}</td></tr>
-        <tr><td><b>Industry</b></td><td>${lead.industryType}</td></tr>
+        <tr><td><b>Industry</b></td><td>${lead.inquiryType}</td></tr>
         ${isHealthcare ? `
           <tr><td><b>Clinic Type</b></td><td>${lead.clinicType || 'N/A'}</td></tr>
           <tr><td><b>Looking For</b></td><td>${lead.lookingFor || 'N/A'}</td></tr>
@@ -50,7 +51,7 @@ const sendLeadNotification = async (lead) => {
 
 // Email 2 — Auto reply to lead
 const sendAutoReply = async (lead) => {
-  const isHealthcare = lead.industryType === 'healthcare';
+  const isHealthcare = lead.inquiryType === 'healthcare';
   const header = isHealthcare ? {
     bg: '#16a34a',         // green for healthcare
     title: 'DG Stream',
@@ -115,7 +116,7 @@ const sendAutoReply = async (lead) => {
                   </tr>
                   <tr style="background-color:${isHealthcare ? '#f0fdf4' : '#f0f9ff'};">
                     <td style="border:1px solid ${isHealthcare ? '#bbf7d0' : '#bae6fd'}; font-weight:bold;">Industry</td>
-                    <td style="border:1px solid ${isHealthcare ? '#bbf7d0' : '#bae6fd'};">${cap(lead.industryType)}</td>
+                    <td style="border:1px solid ${isHealthcare ? '#bbf7d0' : '#bae6fd'};">${cap(lead.inquiryType)}</td>
                   </tr>
   
                   ${isHealthcare ? `

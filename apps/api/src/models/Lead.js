@@ -7,13 +7,13 @@ const leadSchema = new mongoose.Schema({
   clinicType: { 
     type: String, 
     enum: ['Dental Clinic', 'IVF Center', 'Hospital', 'Diagnostic Center','Individual Practitioner','Multi-Specialty Clinic','Other'],
-    required: function() { return this.industryType === 'healthcare'; }
+    required: function() { return this.inquiryType === 'healthcare'; }
   },
   lookingFor: { type: String,
     enum:["Patient Acquisition", "SEO & Local Search", "Social Media Management", "Website Development"],
-    required: function() { return this.industryType === 'healthcare'; }
+    required: function() { return this.inquiryType === 'healthcare'; }
    },
-   industryType:{
+   inquiryType:{
      type:String,
      required:true
    },
@@ -24,19 +24,19 @@ const leadSchema = new mongoose.Schema({
    // Retail specific fields
 businessCategory: {
   type: String,
-  required: function() { return this.industryType === 'retail'; }
+  required: function() { return this.inquiryType === 'retail'; }
 },
 businessModel: {
   type: String,
-  required: function() { return this.industryType === 'retail'; }
+  required: function() { return this.inquiryType === 'retail'; }
 },
 whereDoYouSell: {
   type: String,
-  required: function() { return this.industryType === 'retail'; }
+  required: function() { return this.inquiryType === 'retail'; }
 },
 currentStage: {
   type: String,
-  required: function() { return this.industryType === 'retail'; }
+  required: function() { return this.inquiryType === 'retail'; }
 },
   status: { type: String, default: 'New', enum: ['New', 'Contacted', 'Closed'] },
   createdAt: { type: Date, default: Date.now }
