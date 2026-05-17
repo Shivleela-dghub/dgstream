@@ -18,22 +18,22 @@ const createAdmin = async () => {
     await connectDB();
 
     // Check if admin already exists
-    const existing = await Admin.findOne({ username: 'marketing' });
+    const existing = await Admin.findOne({ username: 'marketing@streamys.in' });
     if (existing) {
       console.log('Admin user already exists!');
       process.exit(0);
     }
 
-    const password = await bcrypt.hash('vinshi@123', 10);
+    const password = await bcrypt.hash('marketing@123', 10);
     await Admin.create({
-      username: 'marketing',
+      username: 'marketing@streamys.in',
       password,
       role: 'admin'
     });
 
     console.log('✅ Admin user created!');
-    console.log('   Username: marketing');
-    console.log('   Password: vinshi@123');
+    console.log('   Username:',username);
+    console.log('   Password:',password);
   } catch (err) {
     console.error('❌ Error creating admin:', err.message);
   } finally {

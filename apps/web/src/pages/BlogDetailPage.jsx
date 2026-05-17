@@ -17,6 +17,7 @@ function BlogDetailPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+	console.log("Fetching blog with id:", id);
     window.scrollTo(0, 0);
 
     apiServerClient.get(`/blogs/${id}`)

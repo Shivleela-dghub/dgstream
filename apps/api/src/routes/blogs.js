@@ -9,7 +9,7 @@ const router = express.Router();
 // PUBLIC — all published + not deletedblogs
 router.get('/', async (req, res) => {
   try {
-    const blogs = await Blog.find({status: 'published',isDeleted: false}).sort({ createdAt: -1 });
+    const blogs = await Blog.find({status: 'published', isDeleted: { $ne: true } }).sort({ createdAt: -1 });
     res.json({ success: true, blogs });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // ADMIN — all blogs
 router.get('/all', requireAuth, async (req, res) => {
   try {
-    const blogs = await Blog.find({isDeleted: false}).sort({ createdAt: -1 });
+    const blogs = await Blog.find({ isDeleted: { $ne: true } }).sort({ createdAt: -1 });
     res.json({ success: true, blogs });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
@@ -29,7 +29,13 @@ router.get('/all', requireAuth, async (req, res) => {
 // PUBLIC — single blog
 router.get('/:id', async (req, res) => {
   try {
-    const blog = await Blog.findById(req.params.id,isDeleted: false);
+	console.log("Looking for id:", req.params.id);
+    //const blog = await Blog.findById(_id:req.params.id,isDeleted: false);
+    const blog = await Blog.findOne({ 
+    _id: req.params.id, 
+    isDeleted: { $ne: true } 
+});
+console.log("Found:", blog);
     if (!blog) return res.status(404).json({ message: 'Not found' });
     res.json({ success: true, blog });
   } catch (err) {
@@ -100,7 +106,10 @@ router.put('/:id', requireAuth, upload.single('coverImage'), async (req, res) =>
 // ADMIN — delete blog
 router.delete('/:id', requireAuth, async (req, res) => {
   try {
-    await Blog.findByIdAndDelete(req.params.id,{isDeleted: true,deletedAt: Date.now()});
+  	await Blog.findByIdAndUpdate(req.params.id, { 
+  		isDeleted: true, 
+  		deletedAt: Date.now() 
+	});
     res.json({ success: true, message: 'Blog deleted' });
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });

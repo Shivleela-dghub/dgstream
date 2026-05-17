@@ -5,13 +5,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { format } from 'date-fns';
 
 function BlogCard({ blog }) {
+  console.log("blog:", blog._id, blog.id, blog.slug);
   const isHealthcare = blog.category === 'Healthcare';
   const categoryColor = isHealthcare ? 'text-healthcare bg-healthcare/10' : 'text-retail bg-retail/10';
   const hoverColor = isHealthcare ? 'group-hover:text-healthcare' : 'group-hover:text-retail';
 
   return (
     <Card className="h-full bg-card border-border shadow-sm hover:shadow-premium-hover transition-all duration-300 overflow-hidden flex flex-col group">
-      <Link to={`/blog/${blog._id}`} className="relative h-56 overflow-hidden block">
+      {blog._id && (<Link to={`/blog/${blog._id}`} className="relative h-56 overflow-hidden block">
         <img 
           src={blog.coverImage} 
           alt={blog.title} 
@@ -24,6 +25,7 @@ function BlogCard({ blog }) {
           </span>
         </div>
       </Link>
+)}
       
       <CardContent className="p-6 flex-1 flex flex-col">
         <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4 font-medium">
@@ -33,8 +35,8 @@ function BlogCard({ blog }) {
           </div>
           <div className="flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5" />
-            {blog.readTime} min read
-          </div>
+            {blog.readTime}
+	  </div>
         </div>
         
         <Link to={`/blog/${blog._id}`} className="block mb-3">

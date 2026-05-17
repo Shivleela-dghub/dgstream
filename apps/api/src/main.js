@@ -14,9 +14,14 @@ import { globalRateLimit } from './middleware/global-rate-limit.js';
 import logger from './utils/logger.js';
 import { BodyLimit } from './constants/common.js';
 import leadRoutes from './routes/lead.js';
+import blogRoutes from './routes/blogs.js';
 console.log('leadRoutes:', !!leadRoutes);
 
 const app = express();
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`)
+    next()
+})
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
@@ -72,23 +77,24 @@ app.use(helmet({
 
 // CORS protection - only allow specific origins
 app.use(cors({
-	origin: (origin, callback) => {
-		 //const allowedOrigins = ['https://dgstream.in', 'https://www.dgstream.in'];
-		 const allowedOrigins = [
-  		    'https://dgstream.in',
-  		    'https://www.dgstream.in',
-  		    'http://72.61.174.176:3000'
-		];
-		//const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
-		if (!origin || allowedOrigins.includes(origin)) {
-			callback(null, true);
-		} else {
-			callback(new Error('CORS not allowed'), false);
-		}
-	},
-	credentials: true,
-	methods: ['GET', 'POST'],
-	allowedHeaders: ['Content-Type'],
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      'https://dgstream.in',
+      'https://www.dgstream.in',
+      'http://72.61.174.176:3000',
+      'https://api.dgstream.in',
+      'http://localhost:5173',  // vite dev
+      'http://localhost:3000'
+    ];
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed'), false);
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(morgan('combined'));
@@ -133,9 +139,10 @@ app.use((req, res, next) => {
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 app.use('/api/lead', leadRoutes);
+app.use('/api/blogs', blogRoutes);
 app.use('/api',routes());
 
-app.use('/api', routes());
+//app.use('/api', routes());
 
 app.use(errorMiddleware);
 
