@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, User, ArrowLeft, Share2, Linkedin, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -9,15 +8,16 @@ import RelatedPosts from '@/components/RelatedPosts.jsx';
 import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import apiServerClient from '@/lib/apiServerClient.js';
+import SEO from '@/components/SEO';
 
 function BlogDetailPage() {
-  const { id }     = useParams();          // ← changed from slug to id
-  const navigate   = useNavigate();
-  const [blog, setBlog]       = useState(null);
+  const { id } = useParams();          // ← changed from slug to id
+  const navigate = useNavigate();
+  const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-	console.log("Fetching blog with id:", id);
+    console.log("Fetching blog with id:", id);
     window.scrollTo(0, 0);
 
     apiServerClient.get(`/blogs/${id}`)
@@ -44,17 +44,17 @@ function BlogDetailPage() {
 
   if (!blog) return null;
 
-  const isHealthcare     = blog.category === 'Healthcare';
-  const bgAccentColor    = isHealthcare ? 'bg-healthcare' : 'bg-retail';
-  const shareUrl         = typeof window !== 'undefined' ? window.location.href : '';
+  const isHealthcare = blog.category === 'Healthcare';
+  const bgAccentColor = isHealthcare ? 'bg-healthcare' : 'bg-retail';
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   const handleShare = (platform) => {
-    const text       = encodeURIComponent(blog.title);
+    const text = encodeURIComponent(blog.title);
     const encodedUrl = encodeURIComponent(shareUrl);
     const urls = {
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
       whatsapp: `https://api.whatsapp.com/send?text=${text} ${encodedUrl}`,
-      twitter:  `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${text}`
+      twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${text}`
     };
     if (urls[platform]) window.open(urls[platform], '_blank', 'width=600,height=400');
   };
@@ -65,7 +65,7 @@ function BlogDetailPage() {
     if (blog.sections?.length) {
       blog.sections.forEach(sec => {
         if (sec.heading) html += `<h2>${sec.heading}</h2>`;
-        if (sec.body)    html += `<p>${sec.body}</p>`;
+        if (sec.body) html += `<p>${sec.body}</p>`;
       });
     }
     return html;
@@ -73,19 +73,13 @@ function BlogDetailPage() {
 
   return (
     <>
-      <Helmet>
-        <title>{`${blog.title} | DG Stream Blog`}</title>
-        <meta name="description"          content={blog.content?.substring(0, 160)} />
-        <meta property="og:title"         content={blog.title} />
-        <meta property="og:description"   content={blog.content?.substring(0, 160)} />
-        <meta property="og:image"         content={blog.coverImage} />
-        <meta property="og:type"          content="article" />
-        <meta property="og:url"           content={shareUrl} />
-        <meta name="twitter:card"         content="summary_large_image" />
-        <meta name="twitter:title"        content={blog.title} />
-        <meta name="twitter:description"  content={blog.content?.substring(0, 160)} />
-        <meta name="twitter:image"        content={blog.coverImage} />
-      </Helmet>
+      <SEO
+        title={blog.title}
+        description={blog.content}
+        keywords={[blog.category, ...blog.title.split(' ').filter(w => w.length > 3)]}
+        canonical={window.location.href}
+        image={blog.coverImage || blog.sections?.find(s => s.type === 'image')?.url}
+      />
 
       <Header />
 
@@ -110,9 +104,8 @@ function BlogDetailPage() {
               {/* Category badge */}
               {blog.category && (
                 <div className="flex items-center gap-3 mb-6">
-                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                    isHealthcare ? 'bg-healthcare/10 text-healthcare' : 'bg-retail/10 text-retail'
-                  }`}>
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold ${isHealthcare ? 'bg-healthcare/10 text-healthcare' : 'bg-retail/10 text-retail'
+                    }`}>
                     {blog.category}
                   </span>
                 </div>
@@ -131,7 +124,7 @@ function BlogDetailPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="w-4 h-4" />
-                  {format(new Date(blog.createdAt), 'MMMM dd, yyyy')}  {/* ← createdAt */}  
+                  {format(new Date(blog.createdAt), 'MMMM dd, yyyy')}  {/* ← createdAt */}
                 </div>
                 {blog.readTime && (
                   <div className="flex items-center gap-2">
@@ -184,7 +177,7 @@ function BlogDetailPage() {
                     className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-black hover:text-white transition-colors"
                     aria-label="Share on X">
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                   </button>
                   <button onClick={() => handleShare('whatsapp')}
@@ -224,7 +217,7 @@ function BlogDetailPage() {
                     <button onClick={() => handleShare('twitter')}
                       className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-black hover:text-white transition-colors">
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                       </svg>
                     </button>
                     <button onClick={() => handleShare('whatsapp')}

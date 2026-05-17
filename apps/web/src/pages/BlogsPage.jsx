@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Search, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -9,16 +8,17 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import apiServerClient from '@/lib/apiServerClient.js';  // ← import
+import SEO from '@/components/SEO';
 
 const POSTS_PER_PAGE = 6;
 
 function BlogsPage() {
-  const [blogs, setBlogs]               = useState([]);       // ← API data
+  const [blogs, setBlogs] = useState([]);       // ← API data
   const [loadingBlogs, setLoadingBlogs] = useState(true);     // ← loading state
-  const [searchTerm, setSearchTerm]     = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('All');
-  const [sortBy, setSortBy]             = useState('latest');
-  const [currentPage, setCurrentPage]   = useState(1);
+  const [sortBy, setSortBy] = useState('latest');
+  const [currentPage, setCurrentPage] = useState(1);
 
   // ── Fetch blogs from API ──────────────────────
   useEffect(() => {
@@ -57,7 +57,7 @@ function BlogsPage() {
   }, [blogs, searchTerm, categoryFilter, sortBy]);
 
   // ── Pagination ────────────────────────────────
-  const totalPages   = Math.ceil(filteredAndSortedBlogs.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(filteredAndSortedBlogs.length / POSTS_PER_PAGE);
   const currentBlogs = filteredAndSortedBlogs.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
@@ -74,10 +74,11 @@ function BlogsPage() {
 
   return (
     <>
-      <Helmet>
-        <title>DG Stream Blog | Healthcare & Retail Marketing Insights</title>
-        <meta name="description" content="Industry insights, strategies, and growth tips for Healthcare and Retail brands." />
-      </Helmet>
+      <SEO
+        title="Healthcare & Retail Marketing Blog | Tips & Strategies | DG Stream"
+        description="Read expert tips on healthcare marketing, hospital SEO, patient acquisition and retail growth strategies on the DG Stream blog."
+        keywords="healthcare marketing blog, how to get more patients for clinic, how to promote hospital online, SEO tips for healthcare websites"
+        canonical="https://dgstream.in/blogs" />
 
       <Header />
 

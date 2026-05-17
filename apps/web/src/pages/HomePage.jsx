@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { HeartPulse, ShoppingBag, ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -8,14 +7,16 @@ import Footer from '@/components/Footer.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import SEO from '@/components/SEO';
 
 function HomePage() {
   return (
     <>
-      <Helmet>
-        <title>DG Stream - Digital Marketing Solutions for Healthcare & Retail</title>
-        <meta name="description" content="DG Stream - Healthcare Marketing Expert. Digital marketing solutions for clinics, hospitals, and healthcare providers. Patient acquisition, engagement, and trust building." />
-      </Helmet>
+      <SEO
+        title="Healthcare & Retail Digital Marketing Agency | DG Stream"
+        description="DG Stream is a growth-focused digital marketing agency in Bangalore specialising in healthcare and retail. We help brands acquire customers, build trust and grow revenue."
+        keywords="healthcare digital marketing agency India, retail digital marketing agency, medical marketing agency Bangalore, DG Stream"
+        canonical="https://dgstream.in/" />
 
       <Header />
       <WhatsAppButton />
@@ -39,11 +40,11 @@ function HomePage() {
                   Digital Marketing Solutions for <br className="hidden md:block" />
                   <span className="text-healthcare">Healthcare</span> & <span className="text-retail">Retail</span>
                 </h1>
-                
+
                 <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-3xl mx-auto">
                   Scale your business with industry-specific growth strategies designed to acquire customers, build trust, and maximize revenue.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-6 justify-center">
                   <Button asChild size="lg" className="bg-healthcare text-white hover:bg-healthcare-dark text-lg px-8 py-7 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all group">
                     <Link to="/healthcare">
@@ -67,7 +68,7 @@ function HomePage() {
         <section className="py-24 bg-muted/30">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              
+
               {/* Healthcare Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -84,7 +85,7 @@ function HomePage() {
                     <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                       Empower your medical practice with data-driven patient acquisition, engagement, and trust-building strategies. We bridge the gap between exceptional care and patients actively searching for it.
                     </p>
-                    
+
                     <div className="space-y-4 mb-10 flex-1">
                       {[
                         'Patient Acquisition via SEO',
@@ -98,7 +99,7 @@ function HomePage() {
                         </div>
                       ))}
                     </div>
-                    
+
                     <Button asChild className="w-full bg-healthcare text-white hover:bg-healthcare-dark font-bold rounded-xl py-6 text-lg mt-auto">
                       <Link to="/healthcare">Explore Healthcare Solutions</Link>
                     </Button>
@@ -122,7 +123,7 @@ function HomePage() {
                     <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                       Scale revenue for your lifestyle, fashion, or apparel brand through performance marketing, branding, and conversion-focused strategies designed to turn traffic into sales.
                     </p>
-                    
+
                     <div className="space-y-4 mb-10 flex-1">
                       {[
                         'Performance Marketing (Sales Focused)',
@@ -137,7 +138,7 @@ function HomePage() {
                         </div>
                       ))}
                     </div>
-                    
+
                     <Button asChild className="w-full bg-retail text-white hover:bg-retail-dark font-bold rounded-xl py-6 text-lg mt-auto">
                       <Link to="/retail">Explore Retail Solutions</Link>
                     </Button>

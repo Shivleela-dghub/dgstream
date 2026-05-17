@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, Clock, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -8,16 +7,19 @@ import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import SEO from '@/components/SEO';
 
 function ContactPage() {
   const [industry, setIndustry] = useState('');
 
   return (
     <div>
-      <Helmet>
-        <title>Contact Us | Get a Custom Growth Plan</title>
-        <meta name="description" content="Tell us about your business and our team will get in touch within 24 hours to build your custom growth plan." />
-      </Helmet>
+      <SEO
+        title="Patient Lead Generation Services | Get Your Growth Plan | DG Stream"
+        description="Connect with DG Stream to get a customised healthcare or retail growth plan. We help hospitals, clinics and brands generate more leads and revenue across India."
+        keywords="patient lead generation services, healthcare marketing agency contact, digital marketing for doctors, get a growth plan"
+        canonical="https://dgstream.in/contact"
+      />
 
       <Header />
       <WhatsAppButton />
@@ -40,7 +42,7 @@ function ContactPage() {
 
             <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-start">
               {/* Form Section */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
@@ -69,8 +71,8 @@ function ContactPage() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <ContactForm 
-                        inquiryType={industry} 
+                      <ContactForm
+                        inquiryType={industry}
                         className="space-y-8 bg-card rounded-[2.5rem] p-8 md:p-12 shadow-premium border border-border"
                       />
                     </motion.div>
@@ -79,7 +81,7 @@ function ContactPage() {
               </motion.div>
 
               {/* Contact Info Section */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -87,7 +89,7 @@ function ContactPage() {
               >
                 <div className="bg-primary text-primary-foreground rounded-[2.5rem] p-10 shadow-premium flex flex-col justify-center">
                   <h3 className="text-white mb-8">Direct Contact</h3>
-                  
+
                   <div className="space-y-8">
                     <div className="flex items-start gap-5">
                       <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">

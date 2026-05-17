@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import apiServerClient from '@/lib/apiServerClient.js';
+import { Helmet } from 'react-helmet-async';
 
 export default function EditBlog() {
-  const navigate        = useNavigate();
-  const { id }          = useParams();                    // ← React Router param
+  const navigate = useNavigate();
+  const { id } = useParams();                    // ← React Router param
   const [form, setForm] = useState({
     title: '', author: '', category: '',
     readTime: '', status: 'draft', content: ''
   });
   const [sections, setSections] = useState([{ heading: '', body: '' }]);
-  const [coverImage, setCover]  = useState(null);
-  const [preview, setPreview]   = useState(null);
-  const [error, setError]       = useState('');
-  const [loading, setLoading]   = useState(false);
+  const [coverImage, setCover] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
 
   useEffect(() => {
@@ -24,12 +25,12 @@ export default function EditBlog() {
       .then(({ data }) => {
         const b = data.blog;
         setForm({
-          title:    b.title    || '',
-          author:   b.author   || '',
+          title: b.title || '',
+          author: b.author || '',
           category: b.category || '',
           readTime: b.readTime || '',
-          status:   b.status   || 'draft',
-          content:  b.content  || ''
+          status: b.status || 'draft',
+          content: b.content || ''
         });
         setSections(b.sections?.length ? b.sections : [{ heading: '', body: '' }]);
         setPreview(b.coverImage || null);
@@ -44,7 +45,7 @@ export default function EditBlog() {
     setSections(updated);
   };
 
-  const addSection    = () => setSections([...sections, { heading: '', body: '' }]);
+  const addSection = () => setSections([...sections, { heading: '', body: '' }]);
   const removeSection = (i) => setSections(sections.filter((_, idx) => idx !== i));
 
   const handleCoverChange = (e) => {
@@ -78,108 +79,114 @@ export default function EditBlog() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Topbar */}
-      <div className="bg-gray-900 text-white px-6 h-14 flex items-center justify-between">
-        <span className="font-medium text-sm">dgstream / admin</span>
-        <button onClick={() => navigate('/admin/blogs')}
-          className="text-sm text-gray-300 hover:text-white transition-colors">
-          ← Back to posts
-        </button>
-      </div>
-
-      <div className="max-w-3xl mx-auto px-6 py-8">
-        <h1 className="text-2xl font-semibold text-gray-900 mb-6">Edit Blog Post</h1>
-
-        {error && (
-          <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-4">{error}</div>
-        )}
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-
-          {/* Basic Info */}
-          <Card title="Basic Info">
-            <Field label="Title *">
-              <input required className={inp} placeholder="Blog title"
-                value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} />
-            </Field>
-            <Field label="Author *">
-              <input required className={inp} placeholder="e.g. Dr. Sarah Chen"
-                value={form.author} onChange={e => setForm({ ...form, author: e.target.value })} />
-            </Field>
-            <div className="grid grid-cols-2 gap-4">
-              <Field label="Category">
-                <input className={inp} placeholder="e.g. Healthcare"
-                  value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} />
-              </Field>
-              <Field label="Read Time">
-                <input className={inp} placeholder="e.g. 6 min read"
-                  value={form.readTime} onChange={e => setForm({ ...form, readTime: e.target.value })} />
-              </Field>
-            </div>
-            <Field label="Status">
-              <select className={inp} value={form.status}
-                onChange={e => setForm({ ...form, status: e.target.value })}>
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
-              </select>
-            </Field>
-          </Card>
-
-          {/* Cover Image */}
-          <Card title="Cover Image">
-            {preview && (
-              <img src={preview} alt="preview"
-                className="w-full h-48 object-cover rounded-lg mb-3" />
-            )}
-            <input type="file" accept="image/*" onChange={handleCoverChange}
-              className="text-sm text-gray-500" />
-          </Card>
-
-          {/* Intro */}
-          <Card title="Intro Paragraph">
-            <textarea required className={`${inp} h-28 resize-none`}
-              placeholder="Opening paragraph..."
-              value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} />
-          </Card>
-
-          {/* Sections */}
-          <Card title="Content Sections">
-            <div className="flex flex-col gap-3">
-              {sections.map((sec, i) => (
-                <div key={i} className="border border-gray-100 rounded-lg p-4 bg-gray-50">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-xs text-gray-400">Section {i + 1}</span>
-                    {sections.length > 1 && (
-                      <button type="button" onClick={() => removeSection(i)}
-                        className="text-red-400 hover:text-red-600 text-xl leading-none">×</button>
-                    )}
-                  </div>
-                  <Field label="Heading">
-                    <input className={inp} placeholder="e.g. 1. Dominate Local SEO"
-                      value={sec.heading} onChange={e => updateSection(i, 'heading', e.target.value)} />
-                  </Field>
-                  <Field label="Body">
-                    <textarea className={`${inp} h-24 resize-none mt-2`} placeholder="Section paragraph..."
-                      value={sec.body} onChange={e => updateSection(i, 'body', e.target.value)} />
-                  </Field>
-                </div>
-              ))}
-            </div>
-            <button type="button" onClick={addSection}
-              className="mt-3 w-full py-2.5 border-2 border-dashed border-gray-200 rounded-lg text-sm text-gray-400 hover:border-gray-400 hover:text-gray-600 transition-colors">
-              + Add Section
-            </button>
-          </Card>
-
-          <button type="submit" disabled={loading}
-            className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-700 disabled:opacity-50 transition-colors">
-            {loading ? 'Saving...' : 'Update Post'}
+    <>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Edit Blog | DG Stream Admin</title>
+      </Helmet>
+      <div className="min-h-screen bg-gray-50">
+        {/* Topbar */}
+        <div className="bg-gray-900 text-white px-6 h-14 flex items-center justify-between">
+          <span className="font-medium text-sm">dgstream / admin</span>
+          <button onClick={() => navigate('/admin/blogs')}
+            className="text-sm text-gray-300 hover:text-white transition-colors">
+            ← Back to posts
           </button>
+        </div>
 
-        </form>
+        <div className="max-w-3xl mx-auto px-6 py-8">
+          <h1 className="text-2xl font-semibold text-gray-900 mb-6">Edit Blog Post</h1>
+
+          {error && (
+            <div className="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-4">{error}</div>
+          )}
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+
+            {/* Basic Info */}
+            <Card title="Basic Info">
+              <Field label="Title *">
+                <input required className={inp} placeholder="Blog title"
+                  value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} />
+              </Field>
+              <Field label="Author *">
+                <input required className={inp} placeholder="e.g. Dr. Sarah Chen"
+                  value={form.author} onChange={e => setForm({ ...form, author: e.target.value })} />
+              </Field>
+              <div className="grid grid-cols-2 gap-4">
+                <Field label="Category">
+                  <input className={inp} placeholder="e.g. Healthcare"
+                    value={form.category} onChange={e => setForm({ ...form, category: e.target.value })} />
+                </Field>
+                <Field label="Read Time">
+                  <input className={inp} placeholder="e.g. 6 min read"
+                    value={form.readTime} onChange={e => setForm({ ...form, readTime: e.target.value })} />
+                </Field>
+              </div>
+              <Field label="Status">
+                <select className={inp} value={form.status}
+                  onChange={e => setForm({ ...form, status: e.target.value })}>
+                  <option value="draft">Draft</option>
+                  <option value="published">Published</option>
+                </select>
+              </Field>
+            </Card>
+
+            {/* Cover Image */}
+            <Card title="Cover Image">
+              {preview && (
+                <img src={preview} alt="preview"
+                  className="w-full h-48 object-cover rounded-lg mb-3" />
+              )}
+              <input type="file" accept="image/*" onChange={handleCoverChange}
+                className="text-sm text-gray-500" />
+            </Card>
+
+            {/* Intro */}
+            <Card title="Intro Paragraph">
+              <textarea required className={`${inp} h-28 resize-none`}
+                placeholder="Opening paragraph..."
+                value={form.content} onChange={e => setForm({ ...form, content: e.target.value })} />
+            </Card>
+
+            {/* Sections */}
+            <Card title="Content Sections">
+              <div className="flex flex-col gap-3">
+                {sections.map((sec, i) => (
+                  <div key={i} className="border border-gray-100 rounded-lg p-4 bg-gray-50">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-xs text-gray-400">Section {i + 1}</span>
+                      {sections.length > 1 && (
+                        <button type="button" onClick={() => removeSection(i)}
+                          className="text-red-400 hover:text-red-600 text-xl leading-none">×</button>
+                      )}
+                    </div>
+                    <Field label="Heading">
+                      <input className={inp} placeholder="e.g. 1. Dominate Local SEO"
+                        value={sec.heading} onChange={e => updateSection(i, 'heading', e.target.value)} />
+                    </Field>
+                    <Field label="Body">
+                      <textarea className={`${inp} h-24 resize-none mt-2`} placeholder="Section paragraph..."
+                        value={sec.body} onChange={e => updateSection(i, 'body', e.target.value)} />
+                    </Field>
+                  </div>
+                ))}
+              </div>
+              <button type="button" onClick={addSection}
+                className="mt-3 w-full py-2.5 border-2 border-dashed border-gray-200 rounded-lg text-sm text-gray-400 hover:border-gray-400 hover:text-gray-600 transition-colors">
+                + Add Section
+              </button>
+            </Card>
+
+            <button type="submit" disabled={loading}
+              className="w-full bg-gray-900 text-white py-3 rounded-lg font-medium hover:bg-gray-700 disabled:opacity-50 transition-colors">
+              {loading ? 'Saving...' : 'Update Post'}
+            </button>
+
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
