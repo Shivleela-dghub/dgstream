@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Search, HeartPulse, Target, MousePointerClick, CheckCircle2, TrendingUp, Activity } from 'lucide-react';
 import Header from '@/components/Header.jsx';
@@ -9,6 +8,7 @@ import ContactForm from '@/components/ContactForm.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import SEO from '@/components/SEO';
 
 function HealthcarePage() {
   const services = [
@@ -87,10 +87,12 @@ function HealthcarePage() {
 
   return (
     <>
-      <Helmet>
-        <title>Healthcare Marketing Solutions | DG Stream</title>
-        <meta name="description" content="DG Stream helps clinics, hospitals, and healthcare brands generate high-quality patient leads through SEO, performance marketing, and high-converting digital strategies." />
-      </Helmet>
+      <SEO
+        title="Healthcare Marketing Agency Bangalore | Hospital & Clinic Growth | DG Stream"
+        description="Scale your hospital or clinic with DG Stream's healthcare digital marketing services. SEO, lead generation and patient acquisition strategies across India."
+        keywords="healthcare marketing agency Bangalore, healthcare digital marketing agency India, hospital marketing services, digital marketing for clinics in Bangalore"
+        canonical="https://dgstream.in/healthcare"
+      />
 
       <Header />
       <WhatsAppButton />
@@ -99,8 +101,8 @@ function HealthcarePage() {
         {/* HERO SECTION */}
         <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1629909613638-0e4a1fad8f81?auto=format&fit=crop&q=80" 
+            <img
+              src="https://images.unsplash.com/photo-1629909613638-0e4a1fad8f81?auto=format&fit=crop&q=80"
               alt="Healthcare professionals in a modern clinic setting"
               className="w-full h-full object-cover object-center"
               fetchPriority="high"
@@ -117,21 +119,21 @@ function HealthcarePage() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
               >
                 <h1 className="text-white mb-6">
-                  Get More Patients, <br/>
+                  Get More Patients, <br />
                   <span className="text-healthcare">Not Just Traffic</span>
                 </h1>
-                
+
                 <p className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed max-w-2xl">
                   DG Stream helps clinics, hospitals, and healthcare brands generate high-quality patient leads through SEO, performance marketing, and high-converting digital strategies.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg" className="bg-healthcare text-white hover:bg-healthcare-dark text-lg px-8 py-7 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                     <a href="#contact-section">Get Patient Growth Plan</a>
                   </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
+                  <Button
+                    size="lg"
+                    variant="outline"
                     className="text-lg px-8 py-7 rounded-xl bg-white/5 text-white border-white/20 hover:bg-white/10 hover:text-white backdrop-blur-sm font-semibold transition-all"
                     onClick={scrollToCaseStudies}
                   >
@@ -157,10 +159,10 @@ function HealthcarePage() {
               {services.map((service, index) => {
                 const isEven = index % 2 === 0;
                 const Icon = service.icon;
-                
+
                 return (
                   <div key={index} className={`grid md:grid-cols-2 gap-12 lg:gap-20 items-center ${!isEven ? 'md:flex-row-reverse' : ''}`}>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: isEven ? -30 : 30 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -186,8 +188,8 @@ function HealthcarePage() {
                         <a href="#contact-section">Start Growing My Practice</a>
                       </Button>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -195,8 +197,8 @@ function HealthcarePage() {
                       className={`relative ${!isEven ? 'md:order-1' : ''}`}
                     >
                       <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-premium bg-muted">
-                        <img 
-                          src={service.image} 
+                        <img
+                          src={service.image}
                           alt={service.alt}
                           loading="lazy"
                           className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
@@ -242,7 +244,7 @@ function HealthcarePage() {
                 { id: 'diagnostic', metrics: 'Increase test bookings through ads. Improve local visibility. Fast lead conversion funnels.', cta: 'Increase Test Bookings' }
               ].map((tab) => (
                 <TabsContent key={tab.id} value={tab.id} className="mt-0 outline-none">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-3xl p-8 md:p-12 border shadow-premium text-center max-w-3xl mx-auto"
@@ -259,7 +261,7 @@ function HealthcarePage() {
               ))}
 
               <TabsContent value="more" className="mt-0 outline-none">
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-card rounded-3xl p-8 md:p-12 border shadow-premium max-w-3xl mx-auto"
@@ -282,7 +284,7 @@ function HealthcarePage() {
               </TabsContent>
 
               <TabsContent value="custom" className="mt-0 outline-none">
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-primary text-primary-foreground rounded-3xl p-8 md:p-12 border shadow-premium text-center max-w-3xl mx-auto"
@@ -372,7 +374,7 @@ function HealthcarePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <ContactForm 
+                <ContactForm
                   inquiryType="healthcare"
                   fieldLabels={{
                     name: 'Full Name',

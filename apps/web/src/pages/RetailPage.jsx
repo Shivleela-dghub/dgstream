@@ -1,9 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { 
-  TrendingDown, Filter, EyeOff, BarChart3, 
-  Target, Search, Share2, Zap, Code, 
+import {
+  TrendingDown, Filter, EyeOff, BarChart3,
+  Target, Search, Share2, Zap, Code,
   ShoppingBag, Shirt, ShoppingCart, ArrowRight,
   Rocket, Settings, CheckCircle2
 } from 'lucide-react';
@@ -13,6 +12,7 @@ import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import SEO from '@/components/SEO';
 
 function RetailPage() {
   const services = [
@@ -88,10 +88,11 @@ function RetailPage() {
 
   return (
     <div>
-      <Helmet>
-        <title>Retail & E-commerce Marketing | DG Stream</title>
-        <meta name="description" content="DG Stream helps lifestyle, fashion, and apparel brands scale revenue through performance marketing, branding, and conversion-focused strategies." />
-      </Helmet>
+      <SEO
+        title="Retail & E-commerce Digital Marketing Agency India | DG Stream"
+        description="Grow your retail or D2C brand with DG Stream. Performance marketing, e-commerce SEO and conversion-focused strategies for fashion, lifestyle and apparel brands."
+        keywords="retail digital marketing agency India, e-commerce marketing agency, D2C brand marketing, fashion brand digital marketing India"
+        canonical="https://dgstream.in/retail" />
 
       <Header />
       <WhatsAppButton />
@@ -100,8 +101,8 @@ function RetailPage() {
         {/* HERO SECTION */}
         <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1651326848981-349fd8aadb37?auto=format&fit=crop&q=80" 
+            <img
+              src="https://images.unsplash.com/photo-1651326848981-349fd8aadb37?auto=format&fit=crop&q=80"
               alt="Modern retail and fashion e-commerce concept"
               className="w-full h-full object-cover object-center"
               fetchPriority="high"
@@ -120,18 +121,18 @@ function RetailPage() {
                 <h1 className="text-white mb-6 text-5xl md:text-6xl lg:text-7xl font-extrabold">
                   Turn Traffic Into <span className="text-retail">Sales</span>
                 </h1>
-                
+
                 <p className="text-xl md:text-2xl text-white/80 mb-10 leading-relaxed max-w-2xl">
                   DG Stream helps lifestyle, fashion, and apparel brands scale revenue through performance marketing, branding, and conversion-focused strategies.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button asChild size="lg" className="bg-retail text-white hover:bg-retail-dark text-lg px-8 py-7 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                     <a href="#contact-section">Scale My Brand</a>
                   </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
+                  <Button
+                    size="lg"
+                    variant="outline"
                     className="text-lg px-8 py-7 rounded-xl bg-white/5 text-white border-white/20 hover:bg-white/10 hover:text-white backdrop-blur-sm font-semibold transition-all"
                     onClick={scrollToServices}
                   >
@@ -243,9 +244,9 @@ function RetailPage() {
               {caseStudies.map((study, index) => (
                 <Card key={index} className="bg-card border-border shadow-sm hover:shadow-premium transition-all duration-300 overflow-hidden group">
                   <div className="h-48 overflow-hidden relative">
-                    <img 
-                      src={study.image} 
-                      alt={study.title} 
+                    <img
+                      src={study.image}
+                      alt={study.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -305,8 +306,8 @@ function RetailPage() {
         {/* FINAL CTA & CONTACT SECTION */}
         <section id="contact-section" className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1674027392842-29f8354e236c?auto=format&fit=crop&q=80" 
+            <img
+              src="https://images.unsplash.com/photo-1674027392842-29f8354e236c?auto=format&fit=crop&q=80"
               alt="E-commerce growth background"
               className="w-full h-full object-cover object-center"
             />
@@ -349,7 +350,7 @@ function RetailPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <ContactForm 
+                <ContactForm
                   inquiryType="retail"
                   fieldLabels={{
                     name: 'Full Name',

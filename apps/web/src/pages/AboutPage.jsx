@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Eye, Award, Users, CheckCircle2, TrendingUp, Lightbulb } from 'lucide-react';
@@ -8,6 +7,7 @@ import Footer from '@/components/Footer.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import SEO from '@/components/SEO';
 
 function AboutPage() {
   const values = [
@@ -52,10 +52,12 @@ function AboutPage() {
 
   return (
     <>
-      <Helmet>
-        <title>About Us | DG Stream</title>
-        <meta name="description" content="DG Stream is a growth-focused digital marketing partner dedicated to helping healthcare and retail brands build visibility, trust, and consistent revenue." />
-      </Helmet>
+      <SEO
+        title="About Us | Medical Marketing Agency India | DG Stream"
+        description="DG Stream is a trusted medical and retail marketing agency in India helping hospitals, clinics and brands grow with data-driven digital strategies."
+        keywords="medical marketing agency India, healthcare digital marketing agency India, about DG Stream, digital marketing agency Bangalore"
+        canonical="https://dgstream.in/about"
+      />
 
       <Header />
       <WhatsAppButton />
@@ -156,7 +158,7 @@ function AboutPage() {
         <section className="py-24 bg-muted/30">
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              
+
               {/* Healthcare Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

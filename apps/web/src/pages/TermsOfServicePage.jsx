@@ -1,15 +1,15 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 
 function TermsOfServicePage() {
   return (
     <>
-      <Helmet>
-        <title>Terms of Service | DG Stream</title>
-        <meta name="description" content="Terms of Service for DG Stream. Read our terms and conditions for using our digital marketing services." />
-      </Helmet>
+      <SEO
+        title="Terms of Service | DG Stream"
+        description="Read DG Stream's terms of service to understand the conditions of using our digital marketing services and website."
+        keywords="DG Stream terms of service, digital marketing agency terms"
+        canonical="https://dgstream.in/terms-of-service" />
 
       <Header />
 

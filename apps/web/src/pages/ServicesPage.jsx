@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, HeartPulse, Target, MousePointerClick, CheckCircle2 } from 'lucide-react';
@@ -7,6 +6,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
 import { Button } from '@/components/ui/button';
+import SEO from '@/components/SEO';
 
 function ServicesPage() {
   const services = [
@@ -70,10 +70,11 @@ function ServicesPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Services | DG Stream - Healthcare Marketing</title>
-        <meta name="description" content="Patient Acquisition & Growth Services for Healthcare Brands. Explore our SEO, performance marketing, and digital strategies." />
-      </Helmet>
+      <SEO
+        title="Digital Marketing Services for Healthcare & Retail | DG Stream"
+        description="Explore DG Stream's full suite of digital marketing services — SEO, paid ads, social media, lead generation and conversion optimisation for healthcare and retail brands."
+        keywords="hospital marketing services, healthcare SEO services, patient lead generation services, digital marketing for doctors, online marketing for doctors"
+        canonical="https://dgstream.in/services" />
 
       <Header />
       <WhatsAppButton />
@@ -103,7 +104,7 @@ function ServicesPage() {
               {services.map((service, index) => {
                 const Icon = service.icon;
                 const isEven = index % 2 === 0;
-                
+
                 if (!service.image) {
                   return (
                     <motion.div
@@ -123,7 +124,7 @@ function ServicesPage() {
                           {service.description}
                         </p>
                       </div>
-                      
+
                       <div className="bg-muted/30 rounded-3xl p-8 md:p-10 mb-10 border border-border">
                         <h4 className="text-lg font-bold mb-8 text-center">Key Implementation Details:</h4>
                         <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
@@ -161,7 +162,7 @@ function ServicesPage() {
                       <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
                         {service.description}
                       </p>
-                      
+
                       <div className="bg-muted/30 rounded-3xl p-8 mb-10 border border-border">
                         <h4 className="text-lg font-bold mb-6">Key Implementation Details:</h4>
                         <ul className="space-y-4">
@@ -186,8 +187,8 @@ function ServicesPage() {
                       transition={{ duration: 0.6 }}
                       className={`relative w-full aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-premium bg-muted ${!isEven ? 'lg:order-1' : ''}`}
                     >
-                      <img 
-                        src={service.image} 
+                      <img
+                        src={service.image}
                         alt={service.alt}
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
