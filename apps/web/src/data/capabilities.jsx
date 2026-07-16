@@ -1,0 +1,75 @@
+import {IconAI,Icon3D,IconArch,IconDigital,IconBrand} from "@/components/product-design/showcase/CapabilitySVG";
+
+export const CAPABILITIES = [
+  {
+    area: "Service Area 01",
+    title: "AI Creative",
+    count: "5 deliverable types",
+    icon: <IconAI />,
+    services: [
+      { h: "AI Product Videos", p: "30, 60, and 90-second product-first videos for paid channels. Shot list, scripting, voiceover, and post-production included. Delivered in 4K." },
+      { h: "AI Commercial Videos", p: "Broadcast-quality commercials for TV and digital — narrative-driven, with professional VO and sound design. Indistinguishable from traditionally produced video at 20% of the cost." },
+      { h: "AI Social Content", p: "Monthly content packages: 12–30 posts across Instagram, LinkedIn, and TikTok. Platform-native formats, aspect ratios, and copy included." },
+      { h: "AI Image Creation", p: "Hero imagery, campaign visuals, and editorial-style product photography — generated at scale for campaigns that need volume without a studio budget." },
+      { h: "Photography Enhancement", p: "AI-enhanced existing product photography: background replacement, lighting correction, retouching, and lifestyle scene compositing. Turnaround from 24 hours." },
+    ],
+    note: "Consumer electronics, beauty, DTC brands, Shopify sellers, and Amazon brands who need high-volume visual content without traditional production costs. Minimum engagement from $3,500.",
+  },
+  {
+    area: "Service Area 02",
+    title: "3D Product Visualization",
+    count: "6 deliverable types",
+    icon: <Icon3D />,
+    services: [
+      { h: "Product Rendering", p: "Photorealistic still renders in any colorway, angle, or lighting environment. Delivered as layered PSDs and final web/print-ready files. Indistinguishable from macro photography." },
+      { h: "Product Animation", p: "360° turntable videos, exploded views, mechanism animations, and material transitions. Ideal for product pages, pitch decks, and trade show screens." },
+      { h: "Interactive Experiences", p: "Web-based interactive product viewers — rotate, zoom, and examine material details. Embeds directly in Shopify or custom platforms." },
+      { h: "360° Product Views", p: "Full-sphere product capture for Amazon, Shopify, and custom e-commerce. Proven to reduce return rates by 20–35% in A/B tests." },
+      { h: "Product Configurators", p: "Real-time color, material, finish, and component selection. Integrated with your e-commerce stack and proven to lift add-to-cart rates by 20–30%." },
+      { h: "AR-Ready Assets", p: "USDZ and GLB files for Apple AR, Google AR, and Shopify AR — letting customers place products in their own space before purchase." },
+    ],
+    note: "Furniture, home décor, consumer electronics, luxury goods, and manufacturing brands. Minimum engagement from $4,500.",
+  },
+  {
+    area: "Service Area 03",
+    title: "Interior & Architectural Visualization",
+    count: "5 deliverable types",
+    icon: <IconArch />,
+    services: [
+      { h: "Interior Rendering", p: "Photorealistic interior stills — daylight and artificial lighting, multiple camera angles, furniture, and material specification. Used for pre-sales, investor decks, and tenant attraction." },
+      { h: "Exterior Rendering", p: "Architectural exterior renders — day, dusk, and night lighting, with context landscaping and street-level perspectives. Print and digital resolutions." },
+      { h: "Walkthrough Videos", p: "Cinematic CGI walkthrough videos from building approach through interior spaces. Used for pre-construction sales and planning applications." },
+      { h: "Virtual Staging", p: "AI-powered virtual staging of empty units — furniture, art, and décor placed digitally into real photography. Turn around from 24 hours per image." },
+      { h: "Property Marketing Assets", p: "Floor plan graphics, site plans, brochure layouts, and digital property portals — everything a developer needs to launch a project." },
+    ],
+    note: "Real estate developers, interior designers, architecture practices, and property marketing teams. Minimum engagement from $6,000.",
+  },
+  {
+    area: "Service Area 04",
+    title: "Digital Experiences",
+    count: "5 deliverable types",
+    icon: <IconDigital />,
+    services: [
+      { h: "Premium Websites", p: "Custom-built brand websites that reflect the quality of the product behind them. Strategy, design, development, and launch — delivered as a single integrated engagement." },
+      { h: "Landing Pages", p: "High-conversion landing pages for paid traffic — built around a specific offer, audience, and CTA. A/B testing variants included from week two." },
+      { h: "E-commerce Websites", p: "Shopify and custom e-commerce builds: product pages, collection design, checkout optimization, and performance monitoring from day one." },
+      { h: "UI/UX Design", p: "Full UX audits, user flow mapping, wireframing, and high-fidelity prototypes in Figma. Handed off dev-ready or built by our team." },
+      { h: "Product Microsites", p: "Standalone product launch sites — built for one product, one moment, and one conversion goal. Ideal for product drops and retail pitches." },
+    ],
+    note: "DTC brands, Shopify sellers, product companies launching new lines, and B2B companies investing in a first-class digital presence. Minimum engagement from $8,000.",
+  },
+  {
+    area: "Service Area 05",
+    title: "Branding",
+    count: "5 deliverable types",
+    icon: <IconBrand />,
+    services: [
+      { h: "Brand Identity", p: "Full visual identity systems: logo, color palette, typography, iconography, and photography style guidelines — built for a specific market and audience." },
+      { h: "Packaging Design", p: "Structural and graphic packaging design across print formats — box, label, bag, and pouch. Print-ready files with supplier briefs included." },
+      { h: "Logo Design", p: "Logo and wordmark development. Primary, secondary, and responsive variations. Delivered as SVG, EPS, PNG, and brand-ready formats." },
+      { h: "Brand Guidelines", p: "Comprehensive brand guidelines document: do's and don'ts, usage rules, color specs, typography hierarchy, and voice guidelines." },
+      { h: "Marketing Assets", p: "Templated marketing asset library: ads, social templates, email headers, pitch decks, and sell sheets — all locked to the brand system." },
+    ],
+    note: "Brands launching in new markets, companies rebranding after a funding round, and DTC brands whose visual identity doesn't match the quality of their product. Minimum engagement from $7,500.",
+  },
+];

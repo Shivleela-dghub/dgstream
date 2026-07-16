@@ -8,12 +8,12 @@ import HomePage           from './pages/HomePage.jsx';
 import HealthcarePage     from './pages/HealthcarePage.jsx';
 import RetailPage         from './pages/RetailPage.jsx';
 import ServicesPage       from './pages/ServicesPage.jsx';
-import AboutPage          from './pages/AboutPage.jsx';
 import ContactPage        from './pages/ContactPage.jsx';
 import PrivacyPolicyPage  from './pages/PrivacyPolicyPage.jsx';
 import TermsOfServicePage from './pages/TermsOfServicePage.jsx';
 import BlogsPage          from './pages/BlogsPage.jsx';
 import BlogDetailPage     from './pages/BlogDetailPage.jsx';
+import ProductDesign from "./pages/ProductDesign";
 
 // Admin pages
 import AdminLogin     from './pages/admin/login.jsx';
@@ -21,6 +21,10 @@ import AdminDashboard from './pages/admin/index.jsx';
 import AdminBlogs     from './pages/admin/blogs/index.jsx';
 import NewBlog        from './pages/admin/blogs/new.jsx';
 import EditBlog       from './pages/admin/blogs/[id]/edit.jsx';
+import OurWork from './pages/OurWork.jsx';
+import BrandGrowth from './pages/BrandGrowth.jsx';
+import AboutUs from './pages/AboutUs.jsx';
+
 
 function App() {
   return (
@@ -32,12 +36,16 @@ function App() {
         <Route path="/healthcare"     element={<HealthcarePage />} />
         <Route path="/retail"         element={<RetailPage />} />
         <Route path="/services"       element={<ServicesPage />} />
-        <Route path="/about"          element={<AboutPage />} />
+        <Route path="/about"          element={<AboutUs />} />
         <Route path="/contact"        element={<ContactPage />} />
         <Route path="/blogs"          element={<BlogsPage />} />
         <Route path="/blog/:id"       element={<BlogDetailPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="/product-design" element={<ProductDesign />} />
+        <Route path="/work" element={<OurWork />} />
+        <Route path="/brand-growth" element={<BrandGrowth />} />
+
 
         {/* ── Admin routes ───────────────────── */}
         <Route path="/admin/login"          element={<AdminLogin />} />
