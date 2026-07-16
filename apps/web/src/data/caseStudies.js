@@ -1,0 +1,32 @@
+export const CASE_STUDIES = [
+  {
+    id: "1",
+    title: "Nova",
+    industry: "Fashion & Retail",
+    metricTitle: "Lift in Online Conversion",
+    metricValue: "+38%",
+    thumbnail: "/images/case-studies/nova.jpg",
+    slug: "nova",
+    order: 1,
+  },
+  {
+    id: "2",
+    title: "Orbit & Co",
+    industry: "Technology",
+    metricTitle: "Pre-orders in Launch Week",
+    metricValue: "12,400",
+    thumbnail: "/images/case-studies/orbit.jpg",
+    slug: "orbit-co",
+    order: 2,
+  },
+  {
+    id: "3",
+    title: "Sunday Goods",
+    industry: "Food & Beverage",
+    metricTitle: "Growth in Social Reach",
+    metricValue: "3.1x",
+    thumbnail: "/images/case-studies/sunday.jpg",
+    slug: "sunday-goods",
+    order: 3,
+  },
+];

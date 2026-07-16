@@ -180,3 +180,47 @@
     box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #FFFFFF;
+  --black: #0A0A0F;
+  --surface: #F5F5F2;
+  --border: #E8E8E4;
+  --muted: #6B6B7A;
+  --lime: #C8FF00;
+  --lime-dark: #8AB300;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+@keyframes particleBurst {
+
+    from{
+
+        opacity:1;
+        transform:translate(0,0) scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:translate(var(--tx), var(--ty)) scale(.2);
+
+    }
+
+}
