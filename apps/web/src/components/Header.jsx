@@ -21,7 +21,7 @@ function Header() {
     {name:'Our Work',path:'/work'},
     // { name: 'About',                path: '/about'      },
     {name:'Brand Growth',path:'/brand-growth'},
-    { name: 'Blogs',                path: '/blogs'      },
+    // { name: 'Blogs',                path: '/blogs'      },
     { name: 'Contact',              path: '/contact'    },
   ];
 

@@ -1,12 +1,5 @@
 import VisualizationGraphic from "@/components/home/graphics/VisualizationGraphic";
-// import google from "@/assets/logos/google.svg";
-// import adobe from "@/assets/logos/adobe.svg";
-// import spotify from "@/assets/logos/spotify.svg";
-// import shopify from "@/assets/logos/shopify.svg";
-// import stripe from "@/assets/logos/stripe.svg";
-// import slack from "@/assets/logos/slack.svg";
-// import notion from "@/assets/logos/notion.svg";
-// import meta from "@/assets/logos/meta.svg";
+
 export const services = [
   // {
   //   id: "01",

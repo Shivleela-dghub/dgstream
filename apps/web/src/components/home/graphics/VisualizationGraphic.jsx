@@ -4,7 +4,7 @@ import FloatingMaterial from "./FloatingMaterial";
 
 export default function VisualizationGraphic() {
   return (
-    <div className="relative h-[620px] w-full overflow-hidden rounded-[40px]">
+    <div className="relative h-[400px] w-full overflow-hidden rounded-[40px]">
 
       {/* Background */}
 

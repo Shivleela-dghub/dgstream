@@ -13,7 +13,7 @@ export default function Bottle() {
         ease: "easeInOut",
       }}
     >
-      <svg width="360" height="520" viewBox="0 0 280 420">
+      <svg width="360" height="400" viewBox="0 0 280 420">
 
         <defs>
 
@@ -76,7 +76,7 @@ export default function Bottle() {
             x="105"
             y="20"
             width="70"
-            height="42"
+            height="40"
             rx="12"
             fill="url(#cap)"
           />

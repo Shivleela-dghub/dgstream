@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { FONT_FAMILIES,COLORS} from "../shared/FontColors";
+import { BtnLime, BtnOutline, Eyebrow } from "../shared/Button";
 
+const {clash} = FONT_FAMILIES;
 export default function CTASection() {
   return (
     <section className="relative overflow-hidden py-20">
@@ -62,22 +65,26 @@ export default function CTASection() {
           }}
           className="mx-auto max-w-4xl text-center"
         >
-          <span className="text-xs uppercase tracking-[0.35em] text-slate-500 font-semibold">
-            Let's Build Together
-          </span>
-
-          <h2 className="mt-8 text-5xl font-black leading-tight lg:text-7xl">
+                      <Eyebrow center>Let's Build Together</Eyebrow>
+          
+          <h2  className="font-extrabold leading-[1.08] mt-4 mb-4"
+                        style={{ ...clash, fontSize: "clamp(1.8rem,3vw,2.8rem)", letterSpacing: "-0.02em", color: COLORS.black }}
+          >
             Ready to create
             <br />
             something amazing?
           </h2>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-slate-400">
             Whether you're launching a new brand, visualizing your next product,
             or scaling with AI-powered content—we're here to make it happen.
           </p>
+           <div className="mt-5 flex gap-[0.85rem] justify-center flex-wrap">
+                        <BtnLime>Book a strategy call</BtnLime>
+                        <BtnOutline>View Our Work</BtnOutline>
+                      </div>
 
-          <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
+          {/* <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
 
             <Link
               to="/contact"
@@ -105,7 +112,7 @@ export default function CTASection() {
               View Our Work
             </Link>
 
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>

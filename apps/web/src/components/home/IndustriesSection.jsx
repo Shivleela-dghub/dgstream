@@ -8,8 +8,10 @@ import {
   Globe2,
   ArrowUpRight,
 } from "lucide-react";
-
 import { industries } from "@/data/homeData";
+import { FONT_FAMILIES } from "../shared/FontColors";
+
+const {clash} = FONT_FAMILIES;
 
 const iconMap = {
   shopping: ShoppingBag,
@@ -27,13 +29,13 @@ export default function IndustriesSection() {
 
         {/* Heading */}
 
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-10">
 
-          <p className="text-xs uppercase tracking-[0.35em] text-slate-500 font-semibold">
+          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-slate-500 font-semibold">
             Industries
           </p>
 
-          <h2 className="mt-5 text-4xl lg:text-5xl font-black leading-tight">
+          <h2 className="font-extrabold leading-[1.08] mt-4 whitespace-nowrap" style={{ ...clash, fontSize: "clamp(1.8rem,2.8vw,2.6rem)", letterSpacing: "-0.02em" }}>
             Industries
             <br />
             We Empower.

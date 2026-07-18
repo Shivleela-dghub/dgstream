@@ -19,12 +19,12 @@ function ContactForm({
   const placeholders = {
     healthcare: {
       name: 'e.g., Dr. Rajesh Kumar',
-      email: 'e.g., rajesh@clinic.com',
+      email: 'e.g., rajesh@gmail.com',
       phone: 'e.g., +91 98765 43210'
     },
     retail: {
       name: 'e.g., Priya Sharma',
-      email: 'e.g., priya@store.com',
+      email: 'e.g., priya@gmail.com',
       phone: 'e.g., +91 98765 43210'
     }
   };
@@ -70,6 +70,12 @@ function ContactForm({
   const retailStages = [
     "Just Starting", "Growing (Consistent Sales)", "Scaling (High Volume)", "Established Brand"
   ];
+
+  const services = [
+    "AI Creative","3D Product Visualization","Interior & Architectural Visualization",
+    "Digital Experiences","Branding","SEO Services","Google & Meta Ads","Website Design & Development",
+    "Branding & Creative Design","Software Development & IT Services","AI Automation & Business Solutions"
+  ]
 
   const [formData, setFormData] = useState({
     name: '',
@@ -297,6 +303,19 @@ if (response.data?.success) {
               </SelectContent>
             </Select>
           </div>
+          <div className="space-y-3">
+            <Label htmlFor="services" className="text-foreground font-bold">{labels.services} Looking For*</Label>
+            <Select value={formData.services} onValueChange={(val) => handleSelectChange('services', val)} required>
+              <SelectTrigger id="currentStage" className={`bg-muted/50 border-border text-foreground focus-visible:ring-${accentColor} h-12 rounded-xl`}>
+                <SelectValue placeholder="Select service" />
+              </SelectTrigger>
+              <SelectContent>
+                {services.map((opt) => (
+                  <SelectItem key={opt} value={opt}>{opt}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </>
       )}
 
@@ -315,9 +334,7 @@ if (response.data?.success) {
 
       <Button 
         type="submit" 
-        className={`w-full text-white text-lg py-7 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all ${
-          isHealthcare ? 'bg-healthcare hover:bg-healthcare-dark' : 'bg-retail hover:bg-retail-dark'
-        }`}
+        className={`w-full text-white text-lg py-7 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all `}
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Submitting...' : 'Get My Growth Plan'}

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function MarketingGraphic() {
   return (
-    <div className="relative h-[620px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
+    <div className="relative h-[400px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
 
       {/* Background Grid */}
       <svg
@@ -55,10 +55,10 @@ export default function MarketingGraphic() {
           duration: 5,
           repeat: Infinity,
         }}
-        className="absolute left-1/2 top-[50%]
+        className="absolute left-1/2 top-[60%]
         -translate-x-1/2 -translate-y-1/2"
       >
-        <div className="w-[360px] rounded-[30px] border border-slate-200 bg-white p-8 shadow-2xl">
+        <div className="w-[200px] h-[150px] rounded-[30px] border border-slate-200 bg-white p-8 shadow-2xl">
 
           <div className="flex items-center justify-between">
             <div>
@@ -163,7 +163,7 @@ export default function MarketingGraphic() {
           duration:6,
           repeat:Infinity
         }}
-        className="absolute left-10 top-20"
+        className="absolute left-10 top-10"
       >
         <div className="w-52 rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl">
 
@@ -194,7 +194,7 @@ export default function MarketingGraphic() {
           duration:5,
           repeat:Infinity
         }}
-        className="absolute right-8 top-20"
+        className="absolute right-8 top-8"
       >
         <div className="w-52 rounded-[22px] border border-slate-200 bg-white p-6 shadow-xl">
 

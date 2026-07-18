@@ -7,6 +7,9 @@ import {
   Rocket,
   TrendingUp,
 } from "lucide-react";
+import { FONT_FAMILIES } from "../shared/FontColors";
+
+const {clash} = FONT_FAMILIES;
 
 const icons = [
   Search,
@@ -27,18 +30,18 @@ export default function ProcessSection() {
 const progress =
   (activeStep / (processSteps.length - 1)) * 100;
   return (
-    <section className="py-20 bg-[#fafafa]">
+    <section className="bg-[#fafafa]">
       <div className="container">
 
         {/* Heading */}
 
         <div className="max-w-3xl mb-20">
 
-          <p className="uppercase tracking-[0.3em] text-xs text-muted-foreground font-medium">
+          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-slate-500 font-semibold">
             How We Work
           </p>
 
-          <h2 className="mt-4 text-4xl lg:text-5xl font-black leading-tight">
+          <h2 className="font-extrabold leading-[1.08] mt-4 whitespace-nowrap" style={{ ...clash, fontSize: "clamp(1.8rem,2.8vw,2.6rem)", letterSpacing: "-0.02em" }}>
             Strategy first.
             <br />
             Creative second.
@@ -152,7 +155,7 @@ const progress =
     duration: 0.4,
     ease: "easeOut",
   }}
- className={`mt-6 h-[300px] rounded-3xl border p-6 transition-all duration-500 flex flex-col ${
+ className={`mt-6 h-[280px] rounded-3xl border p-6 transition-all duration-500 flex flex-col ${
     activeStep === index
       ? "border-lime-400 bg-white shadow-2xl"
       : "border-transparent bg-transparent"
@@ -160,7 +163,7 @@ const progress =
 >
 
   <p
-    className={`text-xs uppercase tracking-[0.25em] font-semibold transition-colors duration-300 ${
+    className={`text-[0.62rem] uppercase tracking-[0.28em] font-semibold transition-colors duration-300 ${
       activeStep === index
         ? "text-lime-500"
         : "text-slate-400"
@@ -170,7 +173,7 @@ const progress =
   </p>
 
   <h3
-    className={`mt-3 text-2xl font-bold transition-colors duration-300 ${
+    className={`mt-3 text-[1.12rem] font-bold transition-colors duration-300 ${
       activeStep === index
         ? "text-black"
         : "text-slate-500"
@@ -180,7 +183,7 @@ const progress =
   </h3>
 
   <p
-    className={`mt-4 leading-8 transition-colors duration-300 ${
+    className={`mt-4 text-[0.86rem] leading-8 transition-colors duration-300 ${
       activeStep === index
         ? "text-slate-700"
         : "text-slate-500"

@@ -52,11 +52,15 @@ function ContactPage() {
                   <Label htmlFor="industry" className="text-lg font-bold text-foreground">Select Your Industry *</Label>
                   <Select value={industry} onValueChange={setIndustry}>
                     <SelectTrigger id="industry" className="h-14 bg-muted/50 border-border text-foreground focus-visible:ring-primary rounded-xl px-4 text-lg">
-                      <SelectValue placeholder="Choose Healthcare or Retail" />
+                      <SelectValue placeholder="Choose Industry" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="retail">Retail & E-commerce</SelectItem>
+                      <SelectItem value="architecture">Architecture</SelectItem>
+                      <SelectItem value="consumer_products">Consumer Products</SelectItem>
+                      <SelectItem value="beauty">Beauty</SelectItem>
+                      <SelectItem value="furniture">Furniture</SelectItem>
+                      <SelectItem value="luxury">Luxury</SelectItem>
+                      <SelectItem value="ecommerce">E-commerce</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -124,18 +128,6 @@ function ContactPage() {
                         <a href="https://wa.me/9731361100" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-[#25D366] transition-colors text-lg">
                           Chat with our team
                         </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-5">
-                      <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                        <Clock className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <div className="font-bold text-white mb-1">Business Hours</div>
-                        <div className="text-primary-foreground/80 text-lg">
-                          Mon-Sat 9AM-7PM IST
-                        </div>
                       </div>
                     </div>
                   </div>

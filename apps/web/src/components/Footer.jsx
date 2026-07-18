@@ -45,16 +45,29 @@ export default function Footer() {
 
             <ul className="space-y-4 text-slate-400">
 
-              <li>AI Creative</li>
+              <li>
+                  <Link to="/product-design">
+                   AI Creative
+                  </Link>
+              </li>
 
-              <li>Architecture</li>
+              <li>
+                <Link to="/home">
+                   Architecture
+                  </Link>
+              </li>
 
-              <li>3D Visualization</li>
+              <li>
+                <Link to="/home">
+                3D Visualization
+                </Link>
+              </li>
 
-              <li>Brand Identity</li>
-
-              <li>Video Production</li>
-
+              <li>
+                <Link to="/brand-growth">
+                   Brand Identity
+                </Link>
+              </li>
             </ul>
 
           </div>
@@ -103,12 +116,12 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 text-slate-400">
                 <Mail size={18} />
-                hello@yourstudio.com
+                contact@dgstream.in
               </div>
 
               <div className="flex items-center gap-3 text-slate-400">
                 <Phone size={18} />
-                +91 9876543210
+                +91 9731361100
               </div>
 
               <div className="mt-8 flex gap-4">

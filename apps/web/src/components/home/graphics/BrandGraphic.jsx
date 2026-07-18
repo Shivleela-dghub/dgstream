@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function BrandGraphic() {
   return (
-    <div className="relative h-[620px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
+    <div className="relative h-[400px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
 
       {/* Background Grid */}
 
@@ -61,7 +61,7 @@ export default function BrandGraphic() {
         }}
         className="absolute left-10 top-16"
       >
-        <div className="w-56 rounded-[24px] border border-slate-200 bg-white p-6 shadow-xl">
+        <div className="w-46 rounded-[24px] border border-slate-200 bg-white p-5 shadow-xl">
           <p className="text-xs tracking-[0.35em] uppercase text-slate-400">
             Brand Book
           </p>
@@ -88,7 +88,7 @@ export default function BrandGraphic() {
         className="absolute left-1/2 top-[52%]
         -translate-x-1/2 -translate-y-1/2"
       >
-        <svg width="300" height="300">
+        <svg width="300" height="280">
 
           <defs>
 
@@ -116,7 +116,7 @@ export default function BrandGraphic() {
             x="70"
             y="70"
             width="160"
-            height="160"
+            height="140"
             rx="26"
             fill="white"
             stroke="#e2e8f0"
@@ -227,7 +227,7 @@ export default function BrandGraphic() {
           duration: 4,
           repeat: Infinity,
         }}
-        className="absolute left-20 bottom-24 flex gap-4"
+        className="absolute left-20 bottom-28 flex gap-4"
       >
         <div className="h-14 w-14 rounded-full bg-lime-400 shadow-xl" />
         <div className="h-14 w-14 rounded-full bg-slate-900 shadow-xl" />
