@@ -1,13 +1,14 @@
 import {COLORS,FONT_FAMILIES} from "../shared/FontColors";
 import {BtnLime, BtnOutline} from "../shared/Button";
 import { BarchartIcon, ConversionRateIcon, FunnelstageIcon, GraphIcon } from "./showcase/HeroIcons";
+import { Link } from "react-router-dom";
 const { mono, clash } = FONT_FAMILIES;
 
 export default function Hero() {
     return (
         <div className="border-b" style={{ borderColor: COLORS.border }}>
             <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-[5rem] pb-[4rem]">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-end">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     <div>
                         <div className="mt-10 flex items-center gap-[0.65rem] mb-6 text-[0.65rem] tracking-[0.14em] uppercase" style={{ ...mono, color: COLORS.muted }}>
                             <span className="block w-[3px] h-[14px] uppercase" style={{ background: COLORS.lime }} />
@@ -26,12 +27,13 @@ export default function Hero() {
                         <p className="mt-10 text-lg leading-8 text-slate-600" style={{ color: COLORS.muted }}>
                            Most agencies separate creative and performance. We don't. Every campaign we build starts with a creative hypothesis — and ends with a measurable outcome.
                         </p>
-                        <div className="flex gap-[0.85rem] uppercase items-center flex-wrap mt-10">
+                        <div className="flex gap-[0.85rem] uppercase items-center flex-wrap mt-5">
                             <BtnLime>Book a growth call</BtnLime>
-                            <BtnOutline>See case studies</BtnOutline>
+                            <Link to="/work"><BtnOutline>See case studies</BtnOutline></Link>
                         </div>
                     </div>
-                    <div className="border p-8" style={{ background: COLORS.surface, borderColor: COLORS.border }}>
+                    <div className="relative">
+                    <div className="mt-10 border p-8" style={{ background: COLORS.surface, borderColor: COLORS.border }}>
                     <div className="text-[0.58rem] tracking-[0.12em] uppercase mb-4" style={{ ...mono, color: COLORS.muted }}>
                         The Growth Stack — At a Glance
                     </div>
@@ -71,6 +73,7 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
+                </div>
                 </div>
                 </div>
                 

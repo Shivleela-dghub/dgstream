@@ -8,7 +8,7 @@ export default function BrandMarquee() {
 
       <div className="container mb-10">
 
-        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-700">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-slate-700">
           Trusted by Leading Brands
         </p>
 

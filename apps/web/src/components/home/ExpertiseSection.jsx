@@ -5,6 +5,9 @@ import VisualizationGraphic from "@/components/home/graphics/VisualizationGraphi
 import ArchitectureGraphic from "@/components/home/graphics/ArchitectureGraphic";
 import BrandGraphic from "@/components/home/graphics/BrandGraphic";
 import MarketingGraphic from "@/components/home/graphics/MarketingGraphic";
+import { FONT_FAMILIES } from "../shared/FontColors";
+
+const { clash} = FONT_FAMILIES;
 
 const graphicMap = {
   1: <VisualizationGraphic />,
@@ -17,17 +20,17 @@ export default function ExpertiseSection() {
   const [active, setActive] = useState(1);
 
   return (
-    <section className="py-28 bg-white">
+    <section className="py-20 bg-white">
       <div className="container">
 
         {/* Heading */}
 
-        <div className="max-w-3xl mb-20">
-          <p className="text-sm uppercase tracking-[0.35em] text-slate-500 font-semibold">
+        <div className="max-w-3xl mb-10">
+          <p className="text-[0.65rem] uppercase tracking-[0.35em] text-slate-500 font-semibold">
             What We Create
           </p>
 
-          <h2 className="mt-10 text-5xl lg:text-6xl font-black leading-none tracking-tight whitespace-nowrap">
+           <h2 className="font-extrabold leading-[1.08] mt-4 whitespace-nowrap" style={{ ...clash, fontSize: "clamp(1.8rem,2.8vw,2.6rem)", letterSpacing: "-0.02em" }}>
             Creative solutions for ambitious brands.
           </h2>
 
@@ -41,7 +44,7 @@ export default function ExpertiseSection() {
 
         {/* Content */}
 
-    <div className="mt-16 flex flex-col lg:flex-row gap-16">
+    <div className="flex flex-col lg:flex-row gap-16">
 
         {/* Left Side */}
             <div className="w-full lg:w-[45%]">
@@ -96,7 +99,7 @@ export default function ExpertiseSection() {
 
                         <motion.h3
                             layout
-                            className={`text-3xl font-bold transition-colors duration-300 ${
+                            className={`text-[1.1rem] font-bold transition-colors duration-300 ${
                             active === item.id
                                 ? "text-black"
                                 : "text-slate-500"
@@ -150,20 +153,24 @@ export default function ExpertiseSection() {
                 ))}
             </div>
         
-        {/* Right Side */}
-       <div className="hidden lg:flex lg:w-[55%] sticky top-28 justify-center items-start">
-  <AnimatePresence mode="wait">
-    <motion.div
-      key={active}
-      initial={{ opacity: 0, x: 40, scale: 0.95 }}
-      animate={{ opacity: 1, x: 0, scale: 1 }}
-      exit={{ opacity: 0, x: -40, scale: 0.95 }}
-      transition={{ duration: 0.45 }}
-      className="w-full"
-    >
-      {graphicMap[active]}
-    </motion.div>
-  </AnimatePresence>
+       {/* Right Side */}
+<div className="hidden lg:flex lg:w-[42%] sticky top-28 justify-center items-start">
+  <div className="relative w-full h-[520px] overflow-hidden">
+
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={active}
+        initial={{ opacity: 0, x: 40, scale: 0.96 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        exit={{ opacity: 0, x: -40, scale: 0.96 }}
+        transition={{ duration: 0.45 }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        {graphicMap[active]}
+      </motion.div>
+    </AnimatePresence>
+
+  </div>
 </div>
     </div>
     </div>

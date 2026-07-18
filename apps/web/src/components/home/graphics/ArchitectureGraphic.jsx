@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 
 export default function ArchitectureGraphic() {
   return (
-    <div className="relative h-[620px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
+    <div className="relative h-[400px] w-full overflow-hidden rounded-[40px] bg-gradient-to-br from-slate-50 to-white">
 
       {/* Grid */}
 
       <svg
         className="absolute inset-0 h-full w-full opacity-[0.08]"
         width="100%"
-        height="100%"
+        height="90%"
       >
         <defs>
           <pattern
@@ -59,7 +59,7 @@ export default function ArchitectureGraphic() {
           duration: 6,
           repeat: Infinity,
         }}
-        className="absolute left-20 top-24"
+        className="absolute left-10 top-10"
       >
         <svg width="250" height="180">
 
@@ -118,10 +118,10 @@ export default function ArchitectureGraphic() {
           duration: 5,
           repeat: Infinity,
         }}
-        className="absolute left-1/2 top-[52%]
+        className="absolute left-1/2 top-[32%]
         -translate-x-1/2 -translate-y-1/2"
       >
-        <svg width="300" height="340">
+        <svg width="280" height="280">
 
           <polygon
             points="150,40 240,90 240,220 150,270 60,220 60,90"
@@ -181,7 +181,7 @@ export default function ArchitectureGraphic() {
           duration:5,
           repeat:Infinity
         }}
-        className="absolute right-14 top-20"
+        className="absolute right-10 top-10"
       >
         <svg width="190" height="70">
 
@@ -232,7 +232,7 @@ export default function ArchitectureGraphic() {
           duration:4,
           repeat:Infinity
         }}
-        className="absolute bottom-28 right-28
+        className="absolute bottom-28 right-25
         h-16 w-16 rounded-full
         bg-gradient-to-br
         from-white

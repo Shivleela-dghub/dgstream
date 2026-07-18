@@ -1,8 +1,8 @@
 export const INDUSTRIES = [
   {
     id: 1,
-    title: "Fashion & Retail",
-    subtitle: "Lookbooks, drop films, and in-store motion.",
+    title: "Architecture",
+    subtitle: "Photorealistic renders, walkthroughs and property marketing.",
     reels: [
       {
         title: "Luxury Brand Campaign",
@@ -26,8 +26,8 @@ export const INDUSTRIES = [
 },
 {
     id:2,
-    title:"Technology",
-    subtitle:"Product launches and feature explainers.",
+    title:"Consumer Products",
+    subtitle:"Packaging, product launches and AI-powered commercial content.",
     reels:[
         {
         title: "Orbit & Co — Launch Film",
@@ -51,8 +51,8 @@ export const INDUSTRIES = [
 },
 {
     id:3,
-    title:"Food & Beverage",
-    subtitle:"Brand films and social-first cutdowns.",
+    title:"Beauty",
+    subtitle:"Premium product campaigns.",
     reels:[
         {
         title: "Sunday Goods — Brand Film",
@@ -76,8 +76,8 @@ export const INDUSTRIES = [
 },
 {
     id:4,
-    title:"Automotive",
-    subtitle:"Hero films and dealership loops.",
+    title:"Furniture",
+    subtitle:"Lifestyle visualization.",
     reels:[
         {
         title: "Arcade — Hero Film",
@@ -95,8 +95,8 @@ export const INDUSTRIES = [
 },
 {
     id:5,
-    title:"Finance",
-    subtitle:"Trust-building brand and explainer content.",
+    title:"Luxury",
+    subtitle:"Creative for premium brands.",
     reels:[
         {
         title: "Meridian — Brand Anthem",
@@ -114,8 +114,8 @@ export const INDUSTRIES = [
 },
 {
     id:6,
-    title:"Healthcare",
-    subtitle:"Patient stories and campaign films.",
+    title:"E-Commerce",
+    subtitle:"Performance focused creative.",
     reels:[
         {
         title: "Kestrel Health — Campaign Film",

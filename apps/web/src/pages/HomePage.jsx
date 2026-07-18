@@ -15,7 +15,7 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="Healthcare & Retail Digital Marketing Agency | DG Stream"
+        title="AI Visual Growth Studio | DG Stream"
         description="DG Stream is a growth-focused digital marketing agency in Bangalore specialising in healthcare and retail. We help brands acquire customers, build trust and grow revenue."
         keywords="healthcare digital marketing agency India, retail digital marketing agency, medical marketing agency Bangalore, DG Stream"
         canonical="https://dgstream.in/" />
