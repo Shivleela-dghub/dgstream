@@ -5,7 +5,7 @@ import PricingCard from "./PricingCard";
 const { mono, clash } = FONT_FAMILIES;
 export default function ChoosePlan(){
     return (
-    <div className="py-20 border-b" style={{ borderColor: COLORS.border }}>
+    <div className="py-10">
         <div className="max-w-[1140px] mx-auto px-6 md:px-16">
             <div>
                 <Eyebrow>Choose Your Plan</Eyebrow>

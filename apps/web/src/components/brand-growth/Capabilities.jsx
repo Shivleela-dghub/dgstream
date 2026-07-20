@@ -35,7 +35,7 @@ export default function Capabilities(){
     };
 
     return (
-        <div className="py-20 border-b" style={{ borderColor: COLORS.border }}>
+        <div className="py-10">
             {/* keyframes for particle burst + ring pulse — move to your global CSS file if you have one */}
             <style>{`
                 @keyframes particleBurst {

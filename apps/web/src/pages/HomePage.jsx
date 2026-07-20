@@ -7,8 +7,8 @@ import HeroSection from "@/components/home/HeroSection";
 import ProcessSection from "@/components/home/ProcessSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import CTASection from "@/components/home/CTASection";
-import BrandMarquee from "@/components/home/BrandMarquee";
 import ExpertiseSection from "@/components/home/ExpertiseSection";
+import BrandMarquee from '@/components/shared/BrandMarquee';
 
 function HomePage() {
  

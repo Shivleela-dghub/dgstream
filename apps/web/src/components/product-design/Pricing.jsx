@@ -7,9 +7,7 @@ const { clash, mono } = FONT_FAMILIES;
 export default function Pricing() {
   return (
     <section
-      className="py-24 border-t"
-      style={{ borderColor: COLORS.border }}
-    >
+      className="py-10">
       <div className="max-w-[1140px] mx-auto px-6 md:px-16">
 
         {/* Heading */}

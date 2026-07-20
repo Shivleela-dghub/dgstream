@@ -7,7 +7,7 @@ import { BtnLime, BtnOutline, Eyebrow } from "../shared/Button";
 const {clash} = FONT_FAMILIES;
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden py-20">
+    <section className="relative overflow-hidden py-10">
       {/* Background Glow */}
 
       <div className="absolute left-1/2 top-1/2 h-[550px] w-[550px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-400/20 blur-[140px]" />
@@ -81,38 +81,8 @@ export default function CTASection() {
           </p>
            <div className="mt-5 flex gap-[0.85rem] justify-center flex-wrap">
                         <BtnLime>Book a strategy call</BtnLime>
-                        <BtnOutline>View Our Work</BtnOutline>
+                        <Link to="/work"><BtnOutline>View Our Work</BtnOutline></Link>
                       </div>
-
-          {/* <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
-
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-3  bg-lime-400 px-8 py-4 text-lg font-semibold text-black uppercase transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-lime-400/30"
-            >
-              Book a strategy call
-
-              <motion.div
-                animate={{
-                  x: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                }}
-              >
-                <ArrowRight size={22} />
-              </motion.div>
-            </Link>
-
-            <Link
-              to="/portfolio"
-              className="border  px-8 py-4 text-lg font-medium transition hover:border-lime-400 hover:bg-white/5"
-            >
-              View Our Work
-            </Link>
-
-          </div> */}
         </motion.div>
       </div>
     </section>

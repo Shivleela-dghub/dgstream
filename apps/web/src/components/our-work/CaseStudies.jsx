@@ -16,7 +16,7 @@ export default function CaseStudies(){
   loadData();
 }, []);
     return (
-        <div className="py-20" id="casestudies">
+        <div className="py-10" id="casestudies">
             <div className="max-w-[1140px] mx-auto px-6 md:px-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-end mb-14">
                     <div>
