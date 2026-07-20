@@ -18,9 +18,10 @@ function Header() {
     // { name: 'Healthcare Solutions', path: '/healthcare' },
     // { name: 'Retail Solutions',     path: '/retail'     },
     {name :'Product Designs',path:'/product-design'},
-    {name:'Our Work',path:'/work'},
+    
     // { name: 'About',                path: '/about'      },
     {name:'Brand Growth',path:'/brand-growth'},
+    {name:'Our Work',path:'/work'},
     // { name: 'Blogs',                path: '/blogs'      },
     { name: 'Contact',              path: '/contact'    },
   ];

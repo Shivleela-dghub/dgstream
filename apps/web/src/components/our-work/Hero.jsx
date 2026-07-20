@@ -6,7 +6,6 @@ const { mono, clash } = FONT_FAMILIES;
 
 export default function Hero() {
     return (
-        <div className="border-b" style={{ borderColor: COLORS.border }}>
             <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-[5rem] pb-[4rem]">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                     <div>
@@ -51,7 +50,7 @@ export default function Hero() {
                                 <BrandwiseArchiveIcon />
                             </div>
                         </div>
-                        <div
+                        {/* <div
                             className="mt-2 inline-block text-[0.58rem] tracking-[0.1em] uppercase px-[0.7rem] py-[0.35rem]"
                             style={{ ...mono, background: COLORS.black, color: COLORS.white }}
                         >
@@ -72,12 +71,11 @@ export default function Hero() {
                             </span>
                         </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
                 </div>
                 </div>
                 
             </div>
-        </div>
     )
 }

@@ -20,7 +20,7 @@ export default function ExpertiseSection() {
   const [active, setActive] = useState(1);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 bg-white">
       <div className="container">
 
         {/* Heading */}

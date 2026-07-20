@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link to="/portfolio">
+                <Link to="/work">
                   Portfolio
                 </Link>
               </li>

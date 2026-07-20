@@ -4,7 +4,7 @@ const { mono, clash } = FONT_FAMILIES;
 
 export default function CTA(){
     return (
-         <div className="py-20 text-center">
+         <div className="py-10 text-center">
         <div className="max-w-[1140px] mx-auto px-6 md:px-16">
           <div className="max-w-[700px] mx-auto">
             <Eyebrow center>Start a Project</Eyebrow>
