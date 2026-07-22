@@ -1,46 +1,53 @@
 import Lead from '../models/Lead.js';
 import { sendLeadEmail } from '../utils/sendMail.js';
+import validator from 'validator'
 
-export const submitLead = async (req, res) => {
+export const submitLead = async(req,res)=>{
   console.log(req.body);
-  const { name, email, phone,inquiryType, message, ...rest } = req.body;
-  // Validate common fields
-  if (!name || !email || !phone || !inquiryType) {
-    return res.status(400).json({ success: false, error: 'All fields required' });
-  }
+  const {name, email,phone,company,services,budget,about_project} = req.body;
+  if (!validator.isEmail(email)) {
+  return res.status(400).json({ success: false, message: 'Invalid email format' });
+}
 
-  // Validate conditionally
-  if (inquiryType === 'healthcare') {
-    if (!rest.clinicType || !rest.lookingFor) {
-      return res.status(400).json({ success: false, error: 'All healthcare fields required' });
-    }
-  } else if (inquiryType === 'retail') {
-    if (!rest.businessCategory || !rest.businessModel || !rest.whereDoYouSell || !rest.currentStage) {
-      return res.status(400).json({ success: false, error: 'All retail fields required' });
-    }
-  }
+ const phoneRegex = /^[6-9]\d{9}$/;
 
+// 1. Clean the input first - remove spaces, +, -
+const cleanPhone = phone ? phone.replace(/\D/g, "") : "";
+
+// 2. Only validate if user actually entered something
+if (cleanPhone) {
+  if (!phoneRegex.test(cleanPhone)) {
+    return res.status(400).json({ success: false, message: 'Invalid phone number. Must be 10 digits starting with 6-9' });
+  }
+}
+
+// 3. Save the cleaned version to DB
+const phoneToSave = cleanPhone || null; // save null if empty
+  if(!name || !email || !company || !services || !budget) {
+    return res.status(400).json({ success: false, error: 'All fields are required' });
+  }
   try {
     const lead = await Lead.create({ 
       name, 
       email, 
-      phone, 
-      inquiryType, 
-      message,
-      ...rest  // spreads clinic_type, service OR businessCategory, businessModel, etc.
+      phone:phoneToSave, 
+      company, 
+      services,
+      budget,
+      about_project
     });
     try {
       await sendLeadEmail(lead);
       console.log('✅ Emails sent successfully');
     } catch (emailErr) {
       console.error('❌ Email error:', JSON.stringify(emailErr, null, 2)); // ← full object
-  console.error('❌ Email error string:', String(emailErr));
-  console.error('❌ Email error keys:', Object.keys(emailErr));
+      console.error('❌ Email error string:', String(emailErr));
+      console.error('❌ Email error keys:', Object.keys(emailErr));
     }
-    res.json({ success: true, data: lead });
-
+    res.status(200).json({ success: true, data: lead });
   } catch (err) {
     console.error('Lead submit error:', err);
     res.status(500).json({ success: false, error: err.message }); // ← shows exact mongoose error
   }
-};
+}
+

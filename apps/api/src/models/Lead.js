@@ -2,42 +2,23 @@ import mongoose from 'mongoose';
 
 const leadSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
+  company: { type: String, required: true, trim: true },
   email: { type: String, required: true, lowercase: true, trim: true },
-  phone: { type: String, required: true, trim: true },
-  clinicType: { 
-    type: String, 
-    enum: ['Dental Clinic', 'IVF Center', 'Hospital', 'Diagnostic Center','Individual Practitioner','Multi-Specialty Clinic','Other'],
-    required: function() { return this.inquiryType === 'healthcare'; }
+  phone: { type: String, required: false, trim: true },
+ services: {
+    type: [String],
+    required: [true, 'Please select at least 1 service'],
+    validate: [arr => arr.length > 0, 'Please select at least 1 service'] // this is the key
   },
-  lookingFor: { type: String,
-    enum:["Patient Acquisition", "SEO & Local Search", "Social Media Management", "Website Development"],
-    required: function() { return this.inquiryType === 'healthcare'; }
-   },
-   inquiryType:{
-     type:String,
-     required:true
-   },
-   message:{
+   budget:{
     type:String,
-    required:false
+    required:true,
+     enum: ['$1,000 - $5,000', '$5,000 - $10,000', '$10,000+']
    },
-   // Retail specific fields
-businessCategory: {
-  type: String,
-  required: function() { return this.inquiryType === 'retail'; }
-},
-businessModel: {
-  type: String,
-  required: function() { return this.inquiryType === 'retail'; }
-},
-whereDoYouSell: {
-  type: String,
-  required: function() { return this.inquiryType === 'retail'; }
-},
-currentStage: {
-  type: String,
-  required: function() { return this.inquiryType === 'retail'; }
-},
+   about_project:{
+    type:String,
+    required:false,
+   },
   status: { type: String, default: 'New', enum: ['New', 'Contacted', 'Closed'] },
   createdAt: { type: Date, default: Date.now }
 });

@@ -156,7 +156,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-8 text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} Your Company. All rights reserved.
+          © {new Date().getFullYear()} DG Stream. All rights reserved.
         </div>
 
       </div>
