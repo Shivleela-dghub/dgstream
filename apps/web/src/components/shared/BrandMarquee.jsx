@@ -10,7 +10,6 @@ export default function BrandMarquee() {
     { name: "boycott", src: "/logos/boycott.jpg" },
     { name: "dirtydogs", src: "/logos/dirtydogs.jpg" },
     { name: "gunmetal", src: "/logos/gun_metal.jpg" },
-    { name: "imed academy", src: "/logos/imed.jpg" },
     { name: "shine-a-kids", src: "/logos/shine_kids.jpg" },
   ]
 

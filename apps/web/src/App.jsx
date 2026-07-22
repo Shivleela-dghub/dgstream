@@ -29,6 +29,12 @@ import AboutUs from './pages/AboutUs.jsx';
 function App() {
   return (
     <Router>
+      <Toaster 
+        position="top-right" 
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
       <ScrollToTop />
       <Routes>
         {/* ── Public routes ──────────────────── */}
@@ -57,7 +63,6 @@ function App() {
         {/* ── 404 ────────────────────────────── */}
         <Route path="*" element={<HomePage />} />
       </Routes>
-      <Toaster position="top-center" />
     </Router>
   );
 }

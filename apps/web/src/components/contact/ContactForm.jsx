@@ -6,6 +6,7 @@ import { contactSchema } from "@/lib/validations/contact.schema";
 import { toast, Toaster } from "sonner";
 import { Mail, Phone, MapPin, Linkedin, Instagram, X, Loader2 } from "lucide-react";
 import { BtnLime } from "../shared/Button";
+import {submitContactForm} from "@/services/contactService"
 
 const services = [
   "SEO SERVICES",
@@ -34,7 +35,7 @@ export default function ContactForm() {
   } = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "", email: "", company: "", phone: "", services: [], budget: "",
+      name: "", email: "", company: "", phone: "", services: [], budget: "",about_project:""
     },
   });
 
@@ -52,15 +53,12 @@ export default function ContactForm() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-    //   const res = await fetch("/api/contact", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(data),
-    //   });
-      if (!res.ok) throw new Error("Failed");
-
-      toast.success("Message sent! We'll get back to you within 24 hours.");
+      const res = await submitContactForm(data);
+      console.log(res);
+    if(res.success){
+       toast.success(`Thank you! We've sent a confirmation email to ${data.email}. Our team will contact you within 24 hours.`);
       reset();
+    }
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -97,10 +95,29 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">PHONE (OPTIONAL)</label>
-              <input id="phone" type="tel" autoComplete="tel" placeholder="+1(___) ___-____" {...register("phone")}
-                className="w-full border-2 border-slate-200 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300]" />
-            </div>
+  <label htmlFor="phone" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">
+    PHONE (OPTIONAL)
+  </label>
+  <input 
+    id="phone" 
+    type="tel" 
+    autoComplete="tel" 
+    placeholder="Optional" 
+    {...register("phone", {
+      validate: (value) => {
+        if (!value) return true; // optional, so empty is ok
+
+        // 1. India 10 digits: starts with 6-9
+        const indiaRegex = /^[6-9]\d{9}$/;
+        const cleanPhone = value.replace(/\D/g, ""); // remove spaces, +, -
+
+        return indiaRegex.test(cleanPhone) || "Enter a valid 10 digit phone number";
+      }
+    })}
+    className="w-full border-2 border-slate-200 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300]" 
+  />
+  {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+</div>
           </div>
 
           <fieldset className="mt-8">
@@ -113,7 +130,7 @@ export default function ContactForm() {
                   <div key={service} onClick={() => toggleService(service)}
                     className={`flex items-center gap-3 border-2 px-4 py-3 cursor-pointer transition ${checked ? "border-[#8AB300] bg-[rgba(200,255,0,0.06)]" : "border-slate-200 hover:border-[#8AB300]"}`}>
                     <input id={id} type="checkbox" checked={checked} onChange={() => toggleService(service)} className="h-4 w-4 accent-[#8AB300] pointer-events-none" />
-                    <label htmlFor={id} className="text-sm font-semibold tracking-wide cursor-pointer">{service}</label>
+                    <label htmlFor={id} className="text-sm uppercase font-semibold tracking-wide cursor-pointer">{service}</label>
                   </div>
                 )
               })}
@@ -126,9 +143,9 @@ export default function ContactForm() {
             <select id="budget" autoComplete="off" {...register("budget")}
               className={`w-full border-2 px-4 py-3 text-sm bg-white focus:outline-none focus:border-[#8AB300] ${errors.budget ? "border-red-500" : "border-slate-200"}`}>
               <option value="">Select a range</option>
-              <option value="1-5k">$1,000 - $5,000</option>
-              <option value="5-10k">$5,000 - $10,000</option>
-              <option value="10k+">$10,000+</option>
+              <option value="$1,000 - $5,000">$1,000 - $5,000</option>
+              <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+              <option value="$10,000+">$10,000+</option>
             </select>
             {errors.budget && <p className="text-red-500 text- mt-1">{errors.budget.message}</p>}
           </div>

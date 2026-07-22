@@ -9,7 +9,7 @@ import {
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import WhatsAppButton from '@/components/WhatsAppButton.jsx';
-import ContactForm from '@/components/ContactForm.jsx';
+//import ContactForm from '@/components/ContactForm.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
