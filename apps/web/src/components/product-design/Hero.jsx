@@ -30,7 +30,7 @@ export default function Hero() {
                 Six creative disciplines — AI visuals, 3D product experiences, architectural renders, digital products, growth marketing, and branding — built to help brands compete in the US and European markets.
               </p>
               <div className="flex gap-[0.85rem] items-center flex-wrap mt-10">
-                <Link to="/work"><BtnLime>Explore Capabilities</BtnLime></Link>
+                <BtnLime onClick={() => document.getElementById('capabilities')?.scrollIntoView({ behavior: 'smooth' })}>Explore Capabilities</BtnLime>
                 <Link to="/contact"><BtnOutline>Start a Project</BtnOutline></Link>
               </div>
             </div>
