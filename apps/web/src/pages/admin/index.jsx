@@ -42,6 +42,7 @@ export default function AdminDashboard() {
         <div className="bg-gray-900 text-white px-6 h-14 flex items-center justify-between">
           <span className="font-medium text-sm">dgstream / admin</span>
           <div className="flex gap-4">
+            <button onClick={() => navigate('/admin/casestudies')} className="text-sm text-gray-300 hover:text-white transition-colors">Case Studies</button>
             <button onClick={() => navigate('/admin/blogs')}
               className="text-sm text-gray-300 hover:text-white transition-colors">
               Manage Blogs
