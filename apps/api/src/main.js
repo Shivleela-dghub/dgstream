@@ -139,9 +139,10 @@ app.use((req, res, next) => {
 //file-uploads
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
-// app.use('/api/lead', leadRoutes);
+
 // app.use('/api/blogs', blogRoutes);
 app.use('/api',routes());
+app.use('/api/lead', leadRoutes);
 app.use('/auth', authRoutes); 
 app.use('/blogs',blogsRoutes);
 app.use('/casestudies', caseStudyRoutes);

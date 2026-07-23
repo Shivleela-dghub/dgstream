@@ -27,8 +27,8 @@ export default function Hero() {
                            Most agencies separate creative and performance. We don't. Every campaign we build starts with a creative hypothesis — and ends with a measurable outcome.
                         </p>
                         <div className="flex gap-[0.85rem] uppercase items-center flex-wrap mt-5">
-                            <BtnLime>Book a growth call</BtnLime>
-                            <Link to="/work"><BtnOutline>See case studies</BtnOutline></Link>
+                            <Link to="/contact"><BtnLime>Book a growth call</BtnLime></Link>
+                            <Link to="/contact"><BtnOutline>Start a project</BtnOutline></Link>
                         </div>
                     </div>
                     <div className="relative">

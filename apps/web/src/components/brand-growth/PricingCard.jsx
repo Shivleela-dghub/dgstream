@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { BtnLime, BtnOutline } from "../shared/Button";
 
 export default function PricingCard({ plan }) {
@@ -87,13 +88,13 @@ export default function PricingCard({ plan }) {
       {/* Button placeholder */}
         <div className="mt-12">
             {plan.featured ? (
-                <BtnLime className="w-full">
+                <Link to='/contact'><BtnLime className="w-full">
                     {plan.button}
-                </BtnLime>
+                </BtnLime></Link>
                 ) : (
-                <BtnOutline className="w-full">
+                <Link to='/contact'><BtnOutline className="w-full">
                     {plan.button}
-                </BtnOutline>
+                </BtnOutline></Link>
             )}
         </div>
     </div>

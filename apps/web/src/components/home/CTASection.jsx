@@ -80,7 +80,7 @@ export default function CTASection() {
             or scaling with AI-powered content—we're here to make it happen.
           </p>
            <div className="mt-5 flex gap-[0.85rem] justify-center flex-wrap">
-                        <BtnLime>Book a strategy call</BtnLime>
+                        <Link to="/contact"><BtnLime>Book a strategy call</BtnLime></Link>
                         <Link to="/work"><BtnOutline>View Our Work</BtnOutline></Link>
                       </div>
         </motion.div>
