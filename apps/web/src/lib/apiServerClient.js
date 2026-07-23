@@ -1,4 +1,5 @@
-const API_SERVER_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_SERVER_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+console.log(API_SERVER_URL);
 
 const apiServerClient = {
   get: async (url) => {

@@ -24,6 +24,8 @@ import EditBlog       from './pages/admin/blogs/[id]/edit.jsx';
 import OurWork from './pages/OurWork.jsx';
 import BrandGrowth from './pages/BrandGrowth.jsx';
 import AboutUs from './pages/AboutUs.jsx';
+import AdminCasestudies from './pages/admin/casestudies/index.jsx';
+import NewCaseStudy from './pages/admin/casestudies/NewCaseStudy.jsx';
 
 
 function App() {
@@ -60,6 +62,8 @@ function App() {
         <Route path="/admin/blogs/new"      element={<NewBlog />} />
         <Route path="/admin/blogs/:id/edit" element={<EditBlog />} />
 
+        <Route path="/admin/casestudies" element={<AdminCasestudies />} />
+        <Route path="/admin/casestudies/new"      element={<NewCaseStudy />} />
         {/* ── 404 ────────────────────────────── */}
         <Route path="*" element={<HomePage />} />
       </Routes>

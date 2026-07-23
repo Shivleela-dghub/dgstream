@@ -14,8 +14,9 @@ import { globalRateLimit } from './middleware/global-rate-limit.js';
 import logger from './utils/logger.js';
 import { BodyLimit } from './constants/common.js';
 import leadRoutes from './routes/lead.js';
-import blogRoutes from './routes/blogs.js';
-console.log('leadRoutes:', !!leadRoutes);
+import blogsRoutes from './routes/blogs.js';
+import authRoutes from './routes/auth.js';
+import caseStudyRoutes from './routes/casestudies.js';
 
 const app = express();
 app.use((req, res, next) => {
@@ -138,11 +139,12 @@ app.use((req, res, next) => {
 //file-uploads
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
-app.use('/api/lead', leadRoutes);
-app.use('/api/blogs', blogRoutes);
+// app.use('/api/lead', leadRoutes);
+// app.use('/api/blogs', blogRoutes);
 app.use('/api',routes());
-
-//app.use('/api', routes());
+app.use('/auth', authRoutes); 
+app.use('/blogs',blogsRoutes);
+app.use('/casestudies', caseStudyRoutes);
 
 app.use(errorMiddleware);
 
