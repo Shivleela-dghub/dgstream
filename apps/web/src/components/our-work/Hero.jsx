@@ -27,7 +27,7 @@ export default function Hero() {
                             A running archive of the brand films, product visuals, and campaigns we've shipped — organized by industry, backed by the numbers each one moved.
                         </p>
                         <div className="flex gap-[0.85rem] uppercase items-center flex-wrap mt-10">
-                            <Link to="/home"><BtnLime>Browse Industries</BtnLime></Link>
+                            <BtnLime onClick={() => document.getElementById('industries')?.scrollIntoView({ behavior: 'smooth' })}>Browse Industries</BtnLime>
                             <Link to="/contact"><BtnOutline>Start  a Project</BtnOutline></Link>
                         </div>
                     </div>

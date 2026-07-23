@@ -13,7 +13,7 @@ export default function OurWork(){
         <Hero />
         <BrandMarquee />
         <ExploreIndustry />
-        <CaseStudies />
+        {/* <CaseStudies /> */}
         <CTA />
         <Footer />
         </>

@@ -50,15 +50,8 @@ export default function Footer() {
                    AI Creative
                   </Link>
               </li>
-
               <li>
-                <Link to="/home">
-                   Architecture
-                  </Link>
-              </li>
-
-              <li>
-                <Link to="/home">
+                <Link to="/work">
                 3D Visualization
                 </Link>
               </li>

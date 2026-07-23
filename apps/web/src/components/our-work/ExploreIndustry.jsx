@@ -35,15 +35,15 @@ export default function ExploreIndustry() {
                                 key={industry.id}
                                 onClick={() => setActiveIndustry(index)}
                                 className={`relative w-full border-b border-[#E5E5E5] px-5 py-5 text-left transition-all duration-300 ${activeIndustry === index
-                                        ? "bg-white"
-                                        : "bg-[#F8F8F6] hover:bg-gray-100"
+                                    ? "bg-white"
+                                    : "bg-[#F8F8F6] hover:bg-gray-100"
                                     }`}
                             >
                                 {/* Left accent */}
                                 <span
                                     className={`absolute left-0 top-0 h-full w-[3px] transition-all duration-300 ${activeIndustry === index
-                                            ? "bg-lime-400"
-                                            : "bg-transparent"
+                                        ? "bg-lime-400"
+                                        : "bg-transparent"
                                         }`}
                                 />
                                 <p
@@ -95,12 +95,10 @@ export default function ExploreIndustry() {
                                 gridTemplateColumns: "repeat(2, 320px)",
                             }}
                         >
-                           {INDUSTRIES[activeIndustry].reels.map((reel) => (
-    <ReelCard key={reel.title} reel={reel} />
-  ))}
-
+                            {INDUSTRIES[activeIndustry].reels.map((reel) => (
+                                <ReelCard key={reel.title} reel={reel} />
+                            ))}
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Eyebrow,BtnLime,BtnOutline} from "../shared/Button";
 import { COLORS,FONT_FAMILIES} from "../shared/FontColors";
 const { mono, clash } = FONT_FAMILIES;
@@ -16,8 +17,8 @@ export default function CTA(){
               Book a free strategy call. We'll map your growth stack, flag the channels leaving money on the table, and come back with a plan within 24 hours.
             </p>
             <div className="flex gap-[0.85rem] justify-center flex-wrap">
-              <BtnLime>Book a growth call</BtnLime>
-              <BtnOutline>See case studies</BtnOutline>
+              <Link to='/contact'><BtnLime>Book a growth call</BtnLime></Link>
+              <Link to='/contact'><BtnOutline>Start a project</BtnOutline></Link>
             </div>
             <div className="flex justify-center gap-8 flex-wrap mt-7">
               {["Response within 24 hours", "Month-to-month, no lock-in", "Senior team on every account"].map((t) => (

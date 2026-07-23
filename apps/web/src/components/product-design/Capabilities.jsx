@@ -17,7 +17,7 @@ export default function Capabilities({ openCap, setOpenCap,hoverCap,setHoverCap}
               </h2>
             </div>
             <p className="mt-10 text-lg leading-8 text-slate-600" style={{ color: COLORS.muted }}>
-              Five service areas, each with a full deliverable menu. Most projects combine two or three — the
+              Service areas, each with a full deliverable menu. Most projects combine two or three — the
               packages that perform best are the ones where creative and strategy share a brief.
             </p>
           </div>
@@ -54,9 +54,9 @@ export default function Capabilities({ openCap, setOpenCap,hoverCap,setHoverCap}
   </div>
 )}
                     </div>
-                    <span className="text-[0.62rem] tracking-[0.1em] uppercase mr-4 hidden sm:inline" style={{ ...mono, color: COLORS.muted }}>
+                    {/* <span className="text-[0.62rem] tracking-[0.1em] uppercase mr-4 hidden sm:inline" style={{ ...mono, color: COLORS.muted }}>
                       {cap.count}
-                    </span>
+                    </span> */}
                     <div
                       className="w-7 h-7 flex items-center justify-center text-[1.1rem] font-light leading-none flex-shrink-0"
                       style={{ background: COLORS.surface, border: `1px solid ${COLORS.border}` }}

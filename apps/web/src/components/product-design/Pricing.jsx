@@ -1,6 +1,7 @@
 import { Eyebrow,BtnOutline,BtnLime} from "../shared/Button";
 import { COLORS, FONT_FAMILIES } from "../shared/FontColors";
 import { PRICING } from "../../data/pricing";
+import { Link } from "react-router-dom";
 
 const { clash, mono } = FONT_FAMILIES;
 
@@ -165,13 +166,17 @@ export default function Pricing() {
               </ul>
 
               {plan.featured ? (
-                <BtnLime className="w-full">
-                  {plan.button}
-                </BtnLime>
+                <Link to='/contact'>
+                  <BtnLime className="w-full">
+                    {plan.button}
+                  </BtnLime>
+                </Link>
               ) : (
-                <BtnOutline className="w-full">
-                  {plan.button}
-                </BtnOutline>
+                <Link to='/contact'>
+                  <BtnOutline className="w-full">
+                    {plan.button}
+                  </BtnOutline>
+                </Link>
               )}
             </div>
           ))}

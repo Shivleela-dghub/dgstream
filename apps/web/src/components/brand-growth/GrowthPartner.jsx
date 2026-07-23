@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Eyebrow,BtnLime,BtnOutline} from "../shared/Button";
 import { COLORS, FONT_FAMILIES } from "../shared/FontColors";
 
@@ -19,15 +20,16 @@ export default function GrowthPartner(){
                     <b className="text-[var(--black)]">DG Stream</b> helps businesses accelerate growth through SEO, Google & Meta Ads, Social Media Marketing, Website Development, Branding, AI Automation, and IT Solutions — delivering measurable results, qualified leads, and long-term digital success.
                 </p>
                 <div className="mt-10 grid grid-cols-2 max-w-[750px] border border-[#D9D9D9]">
-                    <button
+                    <Link to='/contact' className="bg-[#C8FF00]"><button
                         className="bg-[#C8FF00] px-4 py-4 text-left transition"
                         style={mono}
                     >
-                        <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-black">
+                        <span className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-black bg-[#C8FF00]">
                         BOOK A FREE STRATEGY CALL
                         </span>
                     </button>
-
+                    </Link>
+                    <Link to='/work'>
                     <button
                         className="hover:text-[#0A0A0F] transition-colors duration-300 text-left transition border-l border-[#D9D9D9] bg-white px-4 py-4"
                         style={{mono,color: COLORS.muted }}
@@ -36,6 +38,7 @@ export default function GrowthPartner(){
                         EXPLORE OUR WORK
                         </span>
                     </button>
+                    </Link>
                 </div>
             </div>
         </div>

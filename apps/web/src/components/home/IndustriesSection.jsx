@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { industries } from "@/data/homeData";
 import { FONT_FAMILIES } from "../shared/FontColors";
+import { useNavigate } from "react-router-dom";
 
 const { clash } = FONT_FAMILIES;
 
@@ -23,6 +24,10 @@ const iconMap = {
 };
 
 export default function IndustriesSection() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/work') // or navigate(`/reel/${id}`)
+  }
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="container">
@@ -51,7 +56,7 @@ export default function IndustriesSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div  onClick={handleClick} className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
 
           {industries.map((industry, index) => {
             const Icon = iconMap[industry.icon];
@@ -67,7 +72,7 @@ export default function IndustriesSection() {
                 className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-slate-200 bg-white p-5 md:p-8 transition-all duration-300 hover:shadow-xl md:hover:shadow-2xl"
               >
                 {/* Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-lime-400/0 via-lime-400/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100 group-hover:from-lime-400/10" />
+                <div className="absolute inset-0 bg-gradient-to-br from-lime-400/0 via-lime-400/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100 group-hover:from-lime-400/10 cursor-pointer" />
 
                 {/* Icon - smaller on mobile */}
                 <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-xl md:rounded-2xl bg-lime-400">

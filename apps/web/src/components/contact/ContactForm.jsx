@@ -143,9 +143,9 @@ export default function ContactForm() {
             <select id="budget" autoComplete="off" {...register("budget")}
               className={`w-full border-2 px-4 py-3 text-sm bg-white focus:outline-none focus:border-[#8AB300] ${errors.budget ? "border-red-500" : "border-slate-200"}`}>
               <option value="">Select a range</option>
-              <option value="$1,000 - $5,000">$1,000 - $5,000</option>
-              <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-              <option value="$10,000+">$10,000+</option>
+              <option value="$500 - $1,000">$500 - $1,000</option>
+              <option value="$1,000 - $2,000">$1,000 - $2,000</option>
+              <option value="$2,000+">$2,000+</option>
             </select>
             {errors.budget && <p className="text-red-500 text- mt-1">{errors.budget.message}</p>}
           </div>
@@ -170,12 +170,12 @@ export default function ContactForm() {
         </form>
 
         <div className="space-y-8">
-          <div className="bg-black text-white p-8">
+          {/* <div className="bg-black text-white p-8">
             <p className="text-sm font-mono tracking-widest mb-4">PREFER TO TALK?</p>
             <h3 className="text-2xl font-bold text-[#FFFFFF] mb-3">Book a 30-min call</h3>
             <p className="text-sm text-slate-300 mb-6">Skip the form — grab a slot directly on our calendar.</p>
             <button className="w-full border border-white py-3 font-semibold tracking-wide hover:bg-white hover:text-black transition">BOOK A CALL</button>
-          </div>
+          </div> */}
           <div className="border border-slate-200 p-6">
             <p className="text-xs font-mono tracking-widest text-[#6B6B7A] mb-4">DIRECT CONTACT</p>
             <hr className="my-3 border-slate-300" />

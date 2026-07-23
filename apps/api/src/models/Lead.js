@@ -13,7 +13,7 @@ const leadSchema = new mongoose.Schema({
    budget:{
     type:String,
     required:true,
-     enum: ['$1,000 - $5,000', '$5,000 - $10,000', '$10,000+']
+     enum: ['$500 - $1,000', '$1,000 - $2,000', '$2,000+']
    },
    about_project:{
     type:String,
