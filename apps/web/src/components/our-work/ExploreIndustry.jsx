@@ -46,12 +46,12 @@ export default function ExploreIndustry() {
                                         : "bg-transparent"
                                         }`}
                                 />
-                                <p
+                                {/* <p
                                     className="text-[0.62rem] uppercase tracking-[0.22em]"
                                     style={{ ...mono, color: "#6B7280" }}
                                 >
                                     {String(index + 1).padStart(2, "0")} / 06
-                                </p>
+                                </p> */}
                                 <h3
                                     className="mt-2 text-[1.05rem] font-bold leading-none"
                                     style={clash}
