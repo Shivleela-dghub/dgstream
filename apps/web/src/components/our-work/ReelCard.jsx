@@ -3,13 +3,14 @@ import { COLORS, FONT_FAMILIES } from "../shared/FontColors";
 
 const { mono, clash } = FONT_FAMILIES;
 
-const POPUP_WIDTH = 898;
-const POPUP_HEIGHT = 551;
+const MAX_POPUP_WIDTH = 898;
+const MAX_POPUP_HEIGHT = 700; // give vertical videos more headroom than 551
 
 export const ReelCard = ({ reel }) => {
   const [isHover, setIsHover] = useState(false);
-  const [isMuted, setIsMuted] = useState(false); // unmuted by default
+  const [isMuted, setIsMuted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [popupSize, setPopupSize] = useState({ width: MAX_POPUP_WIDTH, height: MAX_POPUP_HEIGHT });
   const videoRef = useRef(null);
   const timeoutRef = useRef(null);
   const innerTimeoutRef = useRef(null);
@@ -20,13 +21,29 @@ export const ReelCard = ({ reel }) => {
     v.muted = isMuted;
   }, [isMuted]);
 
-  // cleanup any pending timers on unmount
   useEffect(() => {
     return () => {
       clearTimeout(timeoutRef.current);
       clearTimeout(innerTimeoutRef.current);
     };
   }, []);
+
+  const handleLoadedMetadata = () => {
+    const v = videoRef.current;
+    if (!v || !v.videoWidth || !v.videoHeight) return;
+
+    const videoRatio = v.videoWidth / v.videoHeight;
+    let width = MAX_POPUP_WIDTH;
+    let height = width / videoRatio;
+
+    if (height > MAX_POPUP_HEIGHT) {
+      height = MAX_POPUP_HEIGHT;
+      width = height * videoRatio;
+    }
+
+    setPopupSize({ width, height });
+    setIsLoading(false);
+  };
 
   const handleMouseEnter = () => {
     timeoutRef.current = setTimeout(() => {
@@ -44,7 +61,6 @@ export const ReelCard = ({ reel }) => {
     }, 150);
   };
 
-  // Cancels a pending OPEN if the user moves away before the popup shows.
   const handleMouseLeaveCard = () => {
     clearTimeout(timeoutRef.current);
   };
@@ -64,7 +80,6 @@ export const ReelCard = ({ reel }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeaveCard}
       >
-        {/* Normal Card */}
         <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#111]">
           <img
             src={reel.thumbnail}
@@ -90,7 +105,6 @@ export const ReelCard = ({ reel }) => {
         </div>
       </div>
 
-      {/* Backdrop + Popup — closes via close button, backdrop click, OR cursor leaving the popup */}
       {isHover && (
         <>
           <div
@@ -99,10 +113,10 @@ export const ReelCard = ({ reel }) => {
           />
 
           <div
-            className="fixed z-[999] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-black"
+            className="fixed z-[999] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-black flex items-center justify-center"
             style={{
-              width: POPUP_WIDTH,
-              height: POPUP_HEIGHT,
+              width: popupSize.width,
+              height: popupSize.height,
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
@@ -118,8 +132,7 @@ export const ReelCard = ({ reel }) => {
               autoPlay
               preload="auto"
               muted={isMuted}
-              onLoadedData={() => setIsLoading(false)}
-              onCanPlay={() => setIsLoading(false)}
+              onLoadedMetadata={handleLoadedMetadata}
               onError={(e) => { console.log("Video error", reel.video, e); }}
               className="w-full h-full object-cover block"
             />
@@ -130,7 +143,6 @@ export const ReelCard = ({ reel }) => {
               </div>
             )}
 
-            {/* Close Button */}
             <button
               onClick={(e) => { e.stopPropagation(); closePopup(); }}
               className="absolute top-3 right-3 h-9 w-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition z-30"
@@ -140,7 +152,6 @@ export const ReelCard = ({ reel }) => {
               </svg>
             </button>
 
-            {/* Bottom Controls */}
             <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent z-20 flex items-center justify-between">
               <span className="text-white text-sm font-medium">{reel.title}</span>
 
