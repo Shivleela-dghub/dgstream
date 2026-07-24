@@ -1,29 +1,4 @@
 export const INDUSTRIES = [
-  {
-    id: 1,
-    title: "Architecture",
-    subtitle: "Photorealistic renders, walkthroughs and property marketing.",
-    reels: [
-      {
-        title: "Luxury Brand Campaign",
-        duration: "01:42",
-        thumbnail: "/images/fashion1.jpg",
-        video: "/videos/fashion1.mp4",
-      },
-      {
-        title: "Summer Collection",
-        duration: "01:58",
-        thumbnail: "/images/fashion2.jpg",
-        video: "/videos/fashion2.mp4",
-      },
-      {
-        title: "Lifestyle Reel",
-        duration: "02:11",
-        thumbnail: "/images/fashion3.jpg",
-        video: "/videos/fashion3.mp4",
-      },
-    ],
-},
 {
     id:2,
     title:"Consumer Products",
@@ -122,6 +97,30 @@ export const INDUSTRIES = [
         duration: "00:15",
         thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1784888371/DGSTREAM_HOODIES_o9rvph.jpg",
         video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1784888371/DGSTREAM_HOODIES_o9rvph.mov",
+      },
+    ],
+},  {
+    id: 1,
+    title: "Architecture",
+    subtitle: "Photorealistic renders, walkthroughs and property marketing.",
+    reels: [
+      {
+        title: "Luxury Brand Campaign",
+        duration: "01:42",
+        thumbnail: "/images/fashion1.jpg",
+        video: "/videos/fashion1.mp4",
+      },
+      {
+        title: "Summer Collection",
+        duration: "01:58",
+        thumbnail: "/images/fashion2.jpg",
+        video: "/videos/fashion2.mp4",
+      },
+      {
+        title: "Lifestyle Reel",
+        duration: "02:11",
+        thumbnail: "/images/fashion3.jpg",
+        video: "/videos/fashion3.mp4",
       },
     ],
 },
