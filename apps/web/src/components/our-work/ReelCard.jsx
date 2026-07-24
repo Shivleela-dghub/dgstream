@@ -44,8 +44,7 @@ export const ReelCard = ({ reel }) => {
     }, 150);
   };
 
-  // Only cancels a pending OPEN if the user moves away before the popup shows.
-  // Does NOT close an already-open popup — that's done via the close button / backdrop.
+  // Cancels a pending OPEN if the user moves away before the popup shows.
   const handleMouseLeaveCard = () => {
     clearTimeout(timeoutRef.current);
   };
@@ -91,7 +90,7 @@ export const ReelCard = ({ reel }) => {
         </div>
       </div>
 
-      {/* Backdrop + Popup — closed only via close button or backdrop click */}
+      {/* Backdrop + Popup — closes via close button, backdrop click, OR cursor leaving the popup */}
       {isHover && (
         <>
           <div
@@ -108,6 +107,7 @@ export const ReelCard = ({ reel }) => {
               top: '50%',
               transform: 'translate(-50%, -50%)',
             }}
+            onMouseLeave={closePopup}
           >
             <video
               key={reel.video}
