@@ -35,7 +35,7 @@ export default function ContactForm() {
   } = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "", email: "", company: "", phone: "", services: [], budget: "",about_project:""
+      name: "", email: "", company: "",city:"", phone: "", services: [], budget: "",about_project:""
     },
   });
 
@@ -89,35 +89,41 @@ export default function ContactForm() {
 
             <div>
               <label htmlFor="company" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">COMPANY</label>
-              <input id="company" type="text" autoComplete="organization" placeholder="Company name" {...register("company")}
+              <input id="company" type="text"  placeholder="Company name" {...register("company")}
                 className={`w-full border-2 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300] ${errors.company ? "border-red-500" : "border-slate-200"}`} />
               {errors.company && <p className="text-red-500 text- mt-1">{errors.company.message}</p>}
             </div>
+            <div>
+              <label htmlFor="company" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">city</label>
+              <input id="city" type="text" placeholder="City name" {...register("city")}
+                className={`w-full border-2 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300] ${errors.city ? "border-red-500" : "border-slate-200"}`} />
+              {errors.city && <p className="text-red-500 text- mt-1">{errors.city.message}</p>}
+            </div>
 
             <div>
-  <label htmlFor="phone" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">
-    PHONE (OPTIONAL)
-  </label>
-  <input 
-    id="phone" 
-    type="tel" 
-    autoComplete="tel" 
-    placeholder="Optional" 
-    {...register("phone", {
-      validate: (value) => {
-        if (!value) return true; // optional, so empty is ok
+              <label htmlFor="phone" className="text-xs uppercase font-mono tracking-widest text-black mb-2 block">
+                Whatsapp number
+              </label>
+              <input 
+                id="phone" 
+                type="tel" 
+                autoComplete="tel" 
+                placeholder="+91 98765 43210" 
+                {...register("phone", {
+                  validate: (value) => {
+                    if (!value) return false; // optional, so empty is ok
 
-        // 1. India 10 digits: starts with 6-9
-        const indiaRegex = /^[6-9]\d{9}$/;
-        const cleanPhone = value.replace(/\D/g, ""); // remove spaces, +, -
+                    // 1. India 10 digits: starts with 6-9
+                    const indiaRegex = /^[6-9]\d{9}$/;
+                    const cleanPhone = value.replace(/\D/g, ""); // remove spaces, +, -
 
-        return indiaRegex.test(cleanPhone) || "Enter a valid 10 digit phone number";
-      }
-    })}
-    className="w-full border-2 border-slate-200 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300]" 
-  />
-  {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
-</div>
+                    return indiaRegex.test(cleanPhone) || "Enter a valid 10 digit phone number";
+                  }
+                })}
+                className="w-full border-2 border-slate-200 px-4 py-3 text-sm focus:outline-none focus:border-[#8AB300]" 
+              />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
+            </div>
           </div>
 
           <fieldset className="mt-8">
