@@ -13,7 +13,7 @@ export default function OurWork(){
         <SEO
             title="Work | DG Stream"
             description="Explore DG Stream's portfolio of creative, technology, and growth-driven projects across healthcare, retail, consumer brands, technology, manufacturing, hospitality, and enterprise sectors. Our work showcases expertise in branding, website development, custom software, AI solutions, 3D visualization, digital marketing, and visual storytelling that deliver measurable business impact and exceptional customer experiences."
-            canonical="https://dgstream.in/" 
+            canonical="https://dgstream.in/work" 
         />
         <Header />
         <Hero />

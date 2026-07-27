@@ -14,7 +14,7 @@ export default function BrandGrowth(){
         <SEO
             title="Brand Growth | DG Stream"
             description="DG Stream helps businesses accelerate brand growth through strategic branding, AI-powered marketing, SEO, performance advertising, social media marketing, content strategy, website optimization, AI automation, and growth analytics. We develop data-driven strategies that increase visibility, generate qualified leads, improve customer engagement, and create sustainable business growth for brands across diverse industries."
-            canonical="https://dgstream.in/" 
+            canonical="https://dgstream.in/brand-growth" 
         />
         <Header />
         <Hero />

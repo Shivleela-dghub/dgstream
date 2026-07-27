@@ -10,7 +10,7 @@ export default function ContactPage(){
         <SEO
             title="Contact | DG Stream"
             description="Connect with DG Stream, your trusted AI Visual Growth Studio, to discuss branding, website design, custom software development, AI solutions, intelligent automation, 3D visualization, digital marketing, and business growth strategies. Our team collaborates with startups, enterprises, and growing brands to create innovative digital experiences and deliver measurable business results through creativity, technology, and AI-powered solutions."
-            canonical="https://dgstream.in/" 
+            canonical="https://dgstream.in/contact" 
         />
         <Header />
         <Hero />
