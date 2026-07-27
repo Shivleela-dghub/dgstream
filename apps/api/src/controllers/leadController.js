@@ -4,7 +4,7 @@ import validator from 'validator'
 
 export const submitLead = async(req,res)=>{
   console.log(req.body);
-  const {name, email,phone,company,services,budget,about_project} = req.body;
+  const {name, email,phone,company,services,budget,about_project,city} = req.body;
   if (!validator.isEmail(email)) {
   return res.status(400).json({ success: false, message: 'Invalid email format' });
 }
@@ -22,8 +22,8 @@ if (cleanPhone) {
 }
 
 // 3. Save the cleaned version to DB
-const phoneToSave = cleanPhone || null; // save null if empty
-  if(!name || !email || !company || !services || !budget) {
+const phoneToSave = cleanPhone; // save null if empty
+  if(!name || !email || !company || !services || !budget || !city) {
     return res.status(400).json({ success: false, error: 'All fields are required' });
   }
   try {
@@ -31,7 +31,8 @@ const phoneToSave = cleanPhone || null; // save null if empty
       name, 
       email, 
       phone:phoneToSave, 
-      company, 
+      company,
+      city, 
       services,
       budget,
       about_project

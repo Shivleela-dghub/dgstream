@@ -42,17 +42,11 @@ export const INDUSTRIES = [
     title:"Furniture",
     subtitle:"Lifestyle visualization.",
     reels:[
-        {
-        title: "Arcade — Hero Film",
-        duration: "01:42",
-        thumbnail: "/images/fashion1.jpg",
-        video: "/videos/fashion1.mp4",
-      },
       {
-        title: "Ironwood — Test Drive Series",
-        duration: "01:58",
-        thumbnail: "/images/fashion2.jpg",
-        video: "/videos/fashion2.mp4",
+        title: "Sofa",
+        duration: "00:56",
+        thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/v1785137673/SOFA_AD_pgbjir.jpg",
+        video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/v1785137673/SOFA_AD_pgbjir.mov",
       },
     ],
 },
@@ -74,12 +68,6 @@ export const INDUSTRIES = [
     title:"E-Commerce",
     subtitle:"Performance focused creative.",
     reels:[
-        {
-        title: "Sofa",
-        duration: "01:42",
-        thumbnail: "/images/fashion1.jpg",
-        video: "/videos/fashion1.mp4",
-      },
       {
         title: "Gun Metal Jeans",
         duration: "00:30",
@@ -104,23 +92,23 @@ export const INDUSTRIES = [
     title: "Architecture",
     subtitle: "Photorealistic renders, walkthroughs and property marketing.",
     reels: [
-      {
-        title: "Luxury Brand Campaign",
-        duration: "01:42",
-        thumbnail: "/images/fashion1.jpg",
-        video: "/videos/fashion1.mp4",
+         {
+        title: "Bedroom Interior",
+        duration: "00:24",
+        thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137292/interior_bedroom_mevs9m.jpg",
+        video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137292/interior_bedroom_mevs9m.mov",
       },
       {
-        title: "Summer Collection",
-        duration: "01:58",
-        thumbnail: "/images/fashion2.jpg",
-        video: "/videos/fashion2.mp4",
+        title: "Bathroom Interior",
+        duration: "00:26",
+        thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137252/Interior_bathroom_visulaization_v7mlie.jpg",
+        video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137252/Interior_bathroom_visulaization_v7mlie.mov",
       },
       {
-        title: "Lifestyle Reel",
-        duration: "02:11",
-        thumbnail: "/images/fashion3.jpg",
-        video: "/videos/fashion3.mp4",
+        title: "Final Interior",
+        duration: "00:25",
+        thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137225/Final_interior_x3pgzw.jpg",
+        video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137225/Final_interior_x3pgzw.mov",
       },
     ],
 },
