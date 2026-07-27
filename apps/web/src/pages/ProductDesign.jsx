@@ -21,7 +21,7 @@ export default function ProductDesign() {
       <SEO
         title="Product Design | DG Stream"
         description="DG Stream transforms products into compelling visual experiences through AI-powered product design, 3D visualization, product rendering, creative branding, packaging design, product photography, motion graphics, and interactive digital experiences. Our design approach combines innovation, aesthetics, and technology to help brands showcase products that engage customers, build trust, and increase conversions across digital and retail channels."
-        canonical="https://dgstream.in/" 
+        canonical="https://dgstream.in/product-design" 
       />
       <Header />
       <Hero />
