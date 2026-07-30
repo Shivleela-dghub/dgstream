@@ -7,6 +7,7 @@ import Capabilities from "@/components/brand-growth/Capabilities";
 import ChoosePlan from "@/components/brand-growth/ChoosePlan";
 import CTA from "@/components/brand-growth/CTA";
 import SEO from "@/components/SEO";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function BrandGrowth(){
     return (
@@ -17,6 +18,7 @@ export default function BrandGrowth(){
             canonical="https://dgstream.in/brand-growth" 
         />
         <Header />
+        <WhatsAppButton />
         <Hero />
         <GrowthPartner />
         <GrowthStack />

@@ -41,12 +41,13 @@ function Header() {
       borderBottom: '1px solid var(--border)',
       transition: 'padding 0.3s',
       padding: scrolled ? '1rem 4rem' : '1.25rem 4rem',
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      display: 'flex', alignItems: 'left', justifyContent: 'flex-start',
+      gap:'10rem'
     }}>
       {/* Logo */}
             <Link to="/" className="flex items-center z-50">
             <img 
-              src="https://horizons-cdn.hostinger.com/e44a4e70-03b5-4831-8a3e-3511764de6f4/f3995bb5842f73467476bcc843e75143.png" 
+              src="https://res.cloudinary.com/dl7dr0bmb/image/upload/v1785403656/DG_Stream_logo_ohyji9.png" 
               alt="DG Stream Logo" 
               className="h-10 md:h-12 w-auto"
             />
@@ -76,7 +77,7 @@ function Header() {
       </nav>
 
       {/* Right side */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="hidden lg:flex">
+      {/* <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="hidden lg:flex">
         
           <a href="https://wa.me/9731361100"
           target="_blank"
@@ -108,7 +109,7 @@ function Header() {
         >
           Get Growth Plan
         </Link>
-      </div>
+      </div> */}
 
       {/* Mobile toggle */}
       <button
@@ -144,7 +145,7 @@ function Header() {
             </Link>
           ))}
         </nav>
-        <div style={{ marginTop: 'auto', marginBottom: '3rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        {/* <div style={{ marginTop: 'auto', marginBottom: '3rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <a
             href="https://wa.me/9731361100"
             target="_blank"
@@ -171,7 +172,7 @@ function Header() {
           >
             Get Growth Plan
           </Link>
-        </div>
+        </div> */}
       </div>
     </header>
      </>

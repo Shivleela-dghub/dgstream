@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/contact/Hero";
 import ContactForm from "@/components/contact/ContactForm";
 import SEO from "@/components/SEO";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function ContactPage(){
     return(
@@ -13,6 +14,7 @@ export default function ContactPage(){
             canonical="https://dgstream.in/contact" 
         />
         <Header />
+        <WhatsAppButton />
         <Hero />
         <ContactForm />
         <Footer />

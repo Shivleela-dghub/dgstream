@@ -6,6 +6,7 @@ import CaseStudies from "@/components/our-work/CaseStudies";
 import CTA from "@/components/our-work/CTA";
 import BrandMarquee from "@/components/shared/BrandMarquee";
 import SEO from "@/components/SEO";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function OurWork(){
     return(
@@ -16,7 +17,8 @@ export default function OurWork(){
             canonical="https://dgstream.in/work" 
         />
         <Header />
-        <Hero />
+        <WhatsAppButton />
+        {/* <Hero /> */}
         <BrandMarquee />
         <ExploreIndustry />
         {/* <CaseStudies /> */}

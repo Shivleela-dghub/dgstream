@@ -120,21 +120,21 @@ export default function Footer() {
               <div className="mt-8 flex gap-4">
 
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/d-g-stream/"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <Linkedin size={18} />
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.instagram.com/_dg_stream_/"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <Instagram size={18} />
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61588735341504"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <FacebookIcon size={18} />
