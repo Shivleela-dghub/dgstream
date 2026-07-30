@@ -8,6 +8,7 @@ import CTA from "@/components/product-design/CTA";
 import Footer from "@/components/Footer";
 import Pricing from "@/components/product-design/Pricing";
 import SEO from "@/components/SEO";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function ProductDesign() {
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -24,6 +25,7 @@ export default function ProductDesign() {
         canonical="https://dgstream.in/product-design" 
       />
       <Header />
+      <WhatsAppButton />
       <Hero />
       <Capabilities openCap={openCap} setOpenCap={setOpenCap} hoverCap={hoverCap} setHoverCap={setHoverCap} />
       <Process />

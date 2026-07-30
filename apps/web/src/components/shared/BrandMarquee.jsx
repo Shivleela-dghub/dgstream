@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
-import { Eyebrow } from "./Button";
+import { COLORS,FONT_FAMILIES} from "./FontColors";
+const { mono} = FONT_FAMILIES;
 
 export default function BrandMarquee() {
   const controls = useAnimation() // <-- MOVED IT HERE
@@ -22,11 +23,11 @@ export default function BrandMarquee() {
 
   return (
     <section className="relative overflow-hidden bg-white py-10">
-      <div className="container mb-10">
-        <div className="max-w-[1140px] mx-auto px-6 md:px-16">
-          <Eyebrow>Trusted by Leading Brands</Eyebrow>
+      <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-[5rem]">
+        <div className="mt-10 flex items-center gap-[0.65rem] mb-6 text-[0.65rem] tracking-[0.14em] uppercase" style={{ ...mono, color: COLORS.muted }}>
+          <span className="block w-[3px] h-[14px] uppercase" style={{ background: COLORS.lime }} />
+            Trusted by Leading Brands
         </div>
-        
       </div>
 
       {/* Left Fade */}

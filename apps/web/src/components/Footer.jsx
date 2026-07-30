@@ -22,7 +22,7 @@ export default function Footer() {
 
             <h3 className="text-3xl font-black">
                <img 
-              src="https://horizons-cdn.hostinger.com/e44a4e70-03b5-4831-8a3e-3511764de6f4/f3995bb5842f73467476bcc843e75143.png" 
+              src="https://res.cloudinary.com/dl7dr0bmb/image/upload/v1785403656/DG_Stream_logo_ohyji9.png" 
               alt="DG Stream Logo" 
               className="h-10 md:h-12 w-auto"
             />
@@ -120,21 +120,21 @@ export default function Footer() {
               <div className="mt-8 flex gap-4">
 
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/d-g-stream/"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <Linkedin size={18} />
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.instagram.com/_dg_stream_/"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <Instagram size={18} />
                 </a>
 
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61588735341504"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <FacebookIcon size={18} />

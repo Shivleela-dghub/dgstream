@@ -2,7 +2,7 @@ import {COLORS,FONT_FAMILIES} from "../shared/FontColors";
 import {BtnLime, BtnOutline} from "../shared/Button";
 import { BarchartIcon, ConversionRateIcon, FunnelstageIcon, GraphIcon } from "./showcase/HeroIcons";
 import { Link } from "react-router-dom";
-const { mono, clash } = FONT_FAMILIES;
+const { mono} = FONT_FAMILIES;
 
 export default function Hero() {
     return (
