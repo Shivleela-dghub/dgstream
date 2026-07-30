@@ -22,7 +22,7 @@ export default function Footer() {
 
             <h3 className="text-3xl font-black">
                <img 
-              src="https://horizons-cdn.hostinger.com/e44a4e70-03b5-4831-8a3e-3511764de6f4/f3995bb5842f73467476bcc843e75143.png" 
+              src="https://res.cloudinary.com/dl7dr0bmb/image/upload/v1785403656/DG_Stream_logo_ohyji9.png" 
               alt="DG Stream Logo" 
               className="h-10 md:h-12 w-auto"
             />
