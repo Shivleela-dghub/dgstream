@@ -18,7 +18,7 @@ export default function OurWork(){
         />
         <Header />
         <WhatsAppButton />
-        {/* <Hero /> */}
+        <Hero />
         <BrandMarquee />
         <ExploreIndustry />
         {/* <CaseStudies /> */}
