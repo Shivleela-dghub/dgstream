@@ -10,7 +10,7 @@ export default function Hero() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
                 <div>
                     <div
-                        className="mt-6 md:mt-8 lg:mt-10 flex items-center gap-[0.65rem] mb-4 md:mb-6 text-[0.6rem] md:text-[0.65rem] tracking-[0.14em] uppercase"
+                        className="mt-8 md:mt-8 lg:mt-10 flex items-center gap-[0.65rem] mb-4 md:mb-6 text-[0.6rem] md:text-[0.65rem] tracking-[0.14em] uppercase"
                         style={{ ...mono, color: COLORS.muted }}
                     >
                         <span

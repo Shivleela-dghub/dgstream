@@ -22,9 +22,9 @@ export default function BrandMarquee() {
   }, [controls])
 
   return (
-    <section className="relative w-full max-w-full overflow-hidden bg-white py-10">
-      <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-[5rem]">
-        <div className="mt-10 flex items-center gap-[0.65rem] mb-6 text-[0.65rem] tracking-[0.14em] uppercase" style={{ ...mono, color: COLORS.muted }}>
+    <section className="relative w-full max-w-full overflow-hidden bg-white">
+      <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-5">
+        <div className="flex items-center gap-[0.65rem] mb-6 text-[0.65rem] tracking-[0.14em] uppercase" style={{ ...mono, color: COLORS.muted }}>
           <span className="block w-[3px] h-[14px] uppercase" style={{ background: COLORS.lime }} />
             Trusted by Leading Brands
         </div>
