@@ -22,7 +22,7 @@ export default function BrandMarquee() {
   }, [controls])
 
   return (
-    <section className="relative overflow-hidden bg-white py-10">
+    <section className="relative w-full max-w-full overflow-hidden bg-white py-10">
       <div className="max-w-[1140px] mx-auto px-6 md:px-16 py-[5rem]">
         <div className="mt-10 flex items-center gap-[0.65rem] mb-6 text-[0.65rem] tracking-[0.14em] uppercase" style={{ ...mono, color: COLORS.muted }}>
           <span className="block w-[3px] h-[14px] uppercase" style={{ background: COLORS.lime }} />
@@ -36,7 +36,7 @@ export default function BrandMarquee() {
       <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent" />
 
       <motion.div
-        className="flex gap-10"
+        className="flex gap-10 w-max"
         animate={controls}
         onHoverStart={() => controls.stop()}
         onHoverEnd={() => controls.start({

@@ -120,7 +120,7 @@ export default function Footer() {
               <div className="mt-8 flex gap-4">
 
                 <a
-                  href="https://www.linkedin.com/company/d-g-stream/"
+                  href="https://www.linkedin.com/company/d-g-stream/posts/"
                   className="rounded-full border border-white/10 p-3 transition hover:border-lime-400 hover:bg-lime-400 hover:text-black"
                 >
                   <Linkedin size={18} />
