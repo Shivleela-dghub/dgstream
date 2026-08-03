@@ -8,10 +8,10 @@ const { mono, clash } = FONT_FAMILIES;
 
 export default function OurStory() {
     return (
-        <div className="py-24 border-t border-[#E2E2DC]">
+        <div className="py-14 sm:py-20 lg:py-24 border-t border-[#E2E2DC]">
             <div className="max-w-[1140px] mx-auto px-6 md:px-16">
 
-                <div className="grid grid-cols-[420px_1fr] gap-28">
+                <div className="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-8 lg:gap-28">
 
                     {/* Left */}
                     <div>
@@ -21,7 +21,7 @@ export default function OurStory() {
                             className="mt-6 leading-[0.92]"
                             style={{
                                 ...clash,
-                                fontSize: "clamp(3rem,3.2vw,4.5rem)",
+                                fontSize: "clamp(2.5rem,7vw,4.5rem)",
                                 letterSpacing: "-0.02em",
                                 color: COLORS.black,
                             }}
@@ -33,10 +33,10 @@ export default function OurStory() {
                     </div>
 
                     {/* Right */}
-                    <div className="space-y-12">
+                    <div className="space-y-8 sm:space-y-12">
 
                         <p
-                            className="text-lg leading-[1.9rem] mb-6"
+                            className="text-base sm:text-lg leading-[1.7rem] sm:leading-[1.9rem] mb-6"
                             style={{ color: COLORS.muted }}
                         >
                             Most agencies pick a side. The creative shops make beautiful work
@@ -46,7 +46,7 @@ export default function OurStory() {
                         </p>
 
                         <p
-                            className="text-lg leading-[1.9rem] mb-6"
+                            className="text-base sm:text-lg leading-[1.7rem] sm:leading-[1.9rem] mb-6"
                             style={{ color: COLORS.muted }}
                         >
                             We built a team of strategists, designers, engineers, and growth
@@ -55,7 +55,7 @@ export default function OurStory() {
                         </p>
 
                         <p
-                            className="text-lg leading-[1.9rem] mb-6"
+                            className="text-base sm:text-lg leading-[1.7rem] sm:leading-[1.9rem] mb-6"
                             style={{ color: COLORS.muted }}
                         >
                             Today we work with ambitious brands across a range of industries,

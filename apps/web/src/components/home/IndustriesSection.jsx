@@ -40,7 +40,7 @@ export default function IndustriesSection() {
 
           <h2
             className="font-extrabold leading-[1.08] mt-3 md:mt-4"
-            style={{...clash, fontSize: "clamp(1.6rem,2.8vw,2.6rem)", letterSpacing: "-0.02em" }}
+            style={{ ...clash, fontSize: "clamp(1.6rem,2.8vw,2.6rem)", letterSpacing: "-0.02em" }}
           >
             Industries
             <br />
@@ -56,20 +56,20 @@ export default function IndustriesSection() {
         </div>
 
         {/* Cards */}
-        <div  onClick={handleClick} className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
-
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, index) => {
             const Icon = iconMap[industry.icon];
 
             return (
               <motion.div
                 key={industry.title}
+                onClick={handleClick}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-slate-200 bg-white p-5 md:p-8 transition-all duration-300 hover:shadow-xl md:hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-slate-200 bg-white p-5 md:p-8 transition-all duration-300 hover:shadow-xl md:hover:shadow-2xl cursor-pointer"
               >
                 {/* Glow */}
                 <div className="absolute inset-0 bg-gradient-to-br from-lime-400/0 via-lime-400/0 to-transparent opacity-0 transition duration-500 group-hover:opacity-100 group-hover:from-lime-400/10 cursor-pointer" />

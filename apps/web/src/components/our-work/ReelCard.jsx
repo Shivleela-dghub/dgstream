@@ -4,7 +4,7 @@ import { COLORS, FONT_FAMILIES } from "../shared/FontColors";
 const { mono, clash } = FONT_FAMILIES;
 
 const MAX_POPUP_WIDTH = 898;
-const MAX_POPUP_HEIGHT = 700; // give vertical videos more headroom than 551
+const MAX_POPUP_HEIGHT = 700;
 
 export const ReelCard = ({ reel }) => {
   const [isHover, setIsHover] = useState(false);
@@ -45,24 +45,33 @@ export const ReelCard = ({ reel }) => {
     setIsLoading(false);
   };
 
-  const handleMouseEnter = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsHover(true);
-      setIsLoading(true);
+  const openPopup = () => {
+    setIsHover(true);
+    setIsLoading(true);
 
-      innerTimeoutRef.current = setTimeout(() => {
-        const v = videoRef.current;
-        if (v) {
-          v.currentTime = 0;
-          v.muted = isMuted;
-          v.play().catch(err => console.error("Play failed:", err.name, err.message));
-        }
-      }, 200);
-    }, 150);
+    innerTimeoutRef.current = setTimeout(() => {
+      const v = videoRef.current;
+      if (v) {
+        v.currentTime = 0;
+        v.muted = isMuted;
+        v.play().catch(err => console.error("Play failed:", err.name, err.message));
+      }
+    }, 200);
+  };
+
+  const handleMouseEnter = () => {
+    // Desktop hover-preview delay
+    timeoutRef.current = setTimeout(openPopup, 150);
   };
 
   const handleMouseLeaveCard = () => {
     clearTimeout(timeoutRef.current);
+  };
+
+  const handleCardClick = () => {
+    // Tap-to-open for touch devices (and works fine as a click for desktop too)
+    clearTimeout(timeoutRef.current);
+    openPopup();
   };
 
   const closePopup = () => {
@@ -76,9 +85,10 @@ export const ReelCard = ({ reel }) => {
   return (
     <>
       <div
-        className="group w-[300px] cursor-pointer relative"
+        className="group w-full cursor-pointer relative"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeaveCard}
+        onClick={handleCardClick}
       >
         <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#111]">
           <img
@@ -94,14 +104,14 @@ export const ReelCard = ({ reel }) => {
               Add MP4
             </span>
           </div>
-          <button className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-400 text-xl text-black">
+          <button className="absolute left-1/2 top-1/2 h-12 w-12 md:h-16 md:w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-lime-400 text-lg md:text-xl text-black">
             ▶
           </button>
         </div>
 
-        <div className="mt-5 flex items-center justify-between">
-          <h4 className="text-lg font-semibold" style={clash}>{reel.title}</h4>
-          <span className="text-sm text-gray-500">{reel.duration}</span>
+        <div className="mt-3 md:mt-5 flex items-center justify-between gap-2">
+          <h4 className="text-base md:text-lg font-semibold" style={clash}>{reel.title}</h4>
+          <span className="text-xs md:text-sm text-gray-500 flex-shrink-0">{reel.duration}</span>
         </div>
       </div>
 
@@ -117,6 +127,8 @@ export const ReelCard = ({ reel }) => {
             style={{
               width: popupSize.width,
               height: popupSize.height,
+              maxWidth: '92vw',
+              maxHeight: '85vh',
               left: '50%',
               top: '50%',
               transform: 'translate(-50%, -50%)',
@@ -161,11 +173,11 @@ export const ReelCard = ({ reel }) => {
               >
                 {isMuted ? (
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c0.03-0.2 0.05-0.41 0.05-0.63zm2.5 0c0 0.94-0.2 1.82-0.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89 0.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-0.67 0.52-1.42 0.93-2.25 1.18v2.06c1.38-0.31 2.63-0.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c0.03-0.2 0.05-0.41 0.05-0.63zm2.5 0c0 0.94-0.2 1.82-0.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89 0.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-0.67 0.52-1.42 0.93-2.25 1.18v2.06c1.38-0.31 2.63-0.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
                   </svg>
                 ) : (
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-0.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89 0.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-0.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-0.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89 0.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-0.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
                   </svg>
                 )}
               </button>
