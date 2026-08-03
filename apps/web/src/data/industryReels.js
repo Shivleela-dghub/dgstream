@@ -92,20 +92,14 @@ export const INDUSTRIES = [
     title: "Architecture",
     subtitle: "Photorealistic renders, walkthroughs and property marketing.",
     reels: [
-         {
-        title: "Bedroom Interior",
-        duration: "00:24",
-        thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137292/interior_bedroom_mevs9m.jpg",
-        video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137292/interior_bedroom_mevs9m.mov",
-      },
-      {
+    {
         title: "Bathroom Interior",
         duration: "00:26",
         thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137252/Interior_bathroom_visulaization_v7mlie.jpg",
         video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137252/Interior_bathroom_visulaization_v7mlie.mov",
       },
       {
-        title: "Final Interior",
+        title: "Bedroom Interior",
         duration: "00:25",
         thumbnail: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137225/Final_interior_x3pgzw.jpg",
         video: "https://res.cloudinary.com/dl7dr0bmb/video/upload/f_auto,q_auto/v1785137225/Final_interior_x3pgzw.mov",
