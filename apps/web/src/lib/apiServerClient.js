@@ -29,6 +29,14 @@ const apiServerClient = {
     });
     return handleResponse(res);
   },
+  patch: async (url, body) => {
+  const res = await fetch(API_SERVER_URL + url, {
+    method: 'PATCH',
+    headers: getHeaders(),
+    body: JSON.stringify(body)
+  });
+  return handleResponse(res);
+},
 
   delete: async (url) => {
     const res = await fetch(API_SERVER_URL + url, {
