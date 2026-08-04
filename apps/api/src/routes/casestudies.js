@@ -7,6 +7,15 @@ router.get('/all', async (req, res) => {
   const studies = await CaseStudy.find({ isPublished: true }).sort({ createdAt: -1 });
   res.json(studies);
 });
+// GET all case studies for admin — published AND drafts
+router.get('/admin/all', async (req, res) => {
+  try {
+    const studies = await CaseStudy.find().sort({ createdAt: -1 });
+    res.json(studies);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
 // POST /casestudies
 router.post('/', async (req, res) => {
@@ -23,6 +32,20 @@ router.post('/', async (req, res) => {
     res.json(study);
   } catch (err) {
     res.status(500).json({ error: err.message });
+  }
+});
+// PATCH — quick publish/unpublish toggle without touching other fields
+router.patch('/:id/publish', async (req, res) => {
+  try {
+    const study = await CaseStudy.findByIdAndUpdate(
+      req.params.id,
+      { isPublished: req.body.isPublished },
+      { new: true }
+    );
+    if (!study) return res.status(404).json({ error: 'Case study not found' });
+    res.json(study);
+  } catch (err) {
+    res.status(500).json({ error: 'Server error' });
   }
 });
 

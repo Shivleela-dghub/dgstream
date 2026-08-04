@@ -187,27 +187,16 @@ export default function NewCaseStudy() {
               <input required className={inp} placeholder="56%"
                 value={form.result} onChange={e => setField('result', e.target.value)} />
             </div>
-            <div className="flex items-center gap-3 mt-2">
-  <label className="flex items-center gap-2 text-sm cursor-pointer select-none">
-    <input
-      type="checkbox"
-      checked={form.isPublished}
-      onChange={e => {
-        console.log('isPublished set to:', e.target.checked);
-        setField('isPublished', e.target.checked);
-      }}
-    />
-    Publish immediately
-  </label>
-  <span
-    className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-      form.isPublished
-        ? 'bg-green-50 text-green-700'
-        : 'bg-yellow-50 text-yellow-700'
-    }`}
+            <div>
+  <label className={label}>Status</label>
+  <select
+    className={inp}
+    value={form.isPublished ? 'published' : 'draft'}
+    onChange={e => setField('isPublished', e.target.value === 'published')}
   >
-    {form.isPublished ? 'Will be published' : 'Will save as draft'}
-  </span>
+    <option value="draft">Draft (not visible on site)</option>
+    <option value="published">Published (live on site)</option>
+  </select>
 </div>
           </div>
 

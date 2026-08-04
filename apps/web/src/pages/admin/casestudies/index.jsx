@@ -14,9 +14,9 @@ export default function AdminCasestudies() {
     fetchCasestudies();
   }, []);
 
-  const fetchCasestudies = async () => {
+const fetchCasestudies = async () => {
   try {
-    const { data } = await apiServerClient.get('/casestudies/all');
+    const { data } = await apiServerClient.get('/casestudies/admin/all'); // was /casestudies/all
     setCasestudies(data || []);
   } catch (err) {
     console.error(err);
@@ -24,6 +24,17 @@ export default function AdminCasestudies() {
     navigate('/admin/login');
   } finally {
     setLoading(false);
+  }
+};
+
+const togglePublish = async (cs) => {
+  try {
+    const { data } = await apiServerClient.patch(`/casestudies/${cs._id}/publish`, {
+      isPublished: !cs.isPublished,
+    });
+    setCasestudies(casestudies.map(c => c._id === cs._id ? data : c));
+  } catch {
+    alert('Failed to update status');
   }
 };
 
@@ -109,13 +120,17 @@ export default function AdminCasestudies() {
                       <td className="px-4 py-3 text-sm text-gray-500">{cs.resultLabel}</td>
                       <td className="px-4 py-3 text-sm text-gray-500">{cs.result}</td>
                       <td className="px-4 py-3">
-                        <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${cs.isPublished === true
-                          ? 'bg-green-50 text-green-700'
-                          : 'bg-yellow-50 text-yellow-700'
-                          }`}>
-                          published
-                        </span>
-                      </td>
+  <button
+    onClick={() => togglePublish(cs)}
+    className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+      cs.isPublished
+        ? 'bg-green-50 text-green-700'
+        : 'bg-yellow-50 text-yellow-700'
+    }`}
+  >
+    {cs.isPublished ? 'Published' : 'Draft — click to publish'}
+  </button>
+</td>
                       <td className="px-4 py-3 text-sm text-gray-400">
                         {new Date(cs.createdAt).toDateString()}
                       </td>
