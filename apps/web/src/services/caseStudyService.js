@@ -2,15 +2,16 @@ import apiServerClient from '@/lib/apiServerClient.js' // your axios instance
 import { CASE_STUDIES } from "@/data/caseStudies"; // keep for fallback
 
 export const caseStudyService = {
-  async getCaseStudies() {
-    try {
-      const response = await apiServerClient.get("/casestudies/all"); // matches backend route
-      return response.data || []; // axios puts data here
-    } catch (err) {
-      console.error("API failed, using mock data", err);
-      return CASE_STUDIES; // fallback so frontend doesn't break
-    }
-  },
+ async getCaseStudies() {
+  try {
+    const response = await apiServerClient.get("/casestudies/all");
+    const data = response.data || [];
+    return data.map(item => ({ ...item, id: item.id ?? item._id }));
+  } catch (err) {
+    console.error("API failed, using mock data", err);
+    return CASE_STUDIES;
+  }
+},
 
   async getCaseStudyBySlug(slug) {
     try {

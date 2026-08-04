@@ -14,6 +14,7 @@ import TermsOfServicePage from './pages/TermsOfServicePage.jsx';
 import BlogsPage          from './pages/BlogsPage.jsx';
 import BlogDetailPage     from './pages/BlogDetailPage.jsx';
 import ProductDesign from "./pages/ProductDesign";
+import CaseStudies from './pages/CaseStudies.jsx';
 
 // Admin pages
 import AdminLogin     from './pages/admin/login.jsx';
@@ -26,6 +27,8 @@ import BrandGrowth from './pages/BrandGrowth.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import AdminCasestudies from './pages/admin/casestudies/index.jsx';
 import NewCaseStudy from './pages/admin/casestudies/NewCaseStudy.jsx';
+import CaseStudyDetail from './components/case-studies/CaseStudyDetail.jsx';
+import EditCaseStudy from './pages/admin/casestudies/EditCaseStudy.jsx';
 
 
 function App() {
@@ -53,7 +56,8 @@ function App() {
         <Route path="/product-design" element={<ProductDesign />} />
         <Route path="/work" element={<OurWork />} />
         <Route path="/brand-growth" element={<BrandGrowth />} />
-
+        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
 
         {/* ── Admin routes ───────────────────── */}
         <Route path="/admin/login"          element={<AdminLogin />} />
@@ -64,6 +68,7 @@ function App() {
 
         <Route path="/admin/casestudies" element={<AdminCasestudies />} />
         <Route path="/admin/casestudies/new"      element={<NewCaseStudy />} />
+        <Route path="/admin/casestudies/:id/edit" element={<EditCaseStudy />} />
         {/* ── 404 ────────────────────────────── */}
         <Route path="*" element={<HomePage />} />
       </Routes>

@@ -81,9 +81,26 @@ function Header() {
       ))}
     </nav>
   </div>
-
-  {/* Right side (currently disabled) */}
-  {/* ...unchanged... */}
+{/* Right side */}
+<div className="hidden lg:flex items-center">
+  <Link
+    to="/case-studies"
+    style={{
+      background: 'var(--black)',
+      color: 'var(--white)',
+      fontFamily: "'Syne', sans-serif",
+      fontWeight: 700,
+      fontSize: '0.85rem',
+      padding: '0.75rem 1.5rem',
+      textAlign: 'center',
+      textDecoration: 'none',
+      letterSpacing: '0.04em',
+      textTransform: 'uppercase',
+    }}
+  >
+    Case studies
+  </Link>
+</div>
 
   {/* Mobile toggle */}
   <button
@@ -152,23 +169,9 @@ function Header() {
           ))}
         </nav>
 
-        {/* <div style={{ marginTop: 'auto', marginBottom: '3rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <a
-            href="https://wa.me/9731361100"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              gap: '0.5rem', fontSize: '1.1rem', fontWeight: 600,
-              color: '#25D366', background: 'rgba(37,211,102,0.1)',
-              padding: '1rem', borderRadius: '0.75rem', textDecoration: 'none',
-            }}
-          >
-            <MessageCircle size={20} />
-            Chat on WhatsApp
-          </a>
+        <div style={{ marginTop: 'auto', marginBottom: '3rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <Link
-            to="/contact"
+            to="/case-studies"
             onClick={() => setMobileMenuOpen(false)}
             style={{
               background: 'var(--black)', color: 'var(--white)',
@@ -177,9 +180,9 @@ function Header() {
               textDecoration: 'none', letterSpacing: '0.04em', textTransform: 'uppercase',
             }}
           >
-            Get Growth Plan
+            Case studies
           </Link>
-        </div> */}
+        </div>
       </div>
     </>
   );

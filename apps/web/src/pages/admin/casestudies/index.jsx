@@ -15,20 +15,20 @@ export default function AdminCasestudies() {
   }, []);
 
   const fetchCasestudies = async () => {
-    try {
-      const { data } = await apiServerClient.get('/casestudies/all');
-      setCasestudies(data || []);
-    } catch (err) {
-        console.error(err)
-        setStudies([])
-      navigate('/admin/login');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const { data } = await apiServerClient.get('/casestudies/all');
+    setCasestudies(data || []);
+  } catch (err) {
+    console.error(err);
+    setCasestudies([]);
+    navigate('/admin/login');
+  } finally {
+    setLoading(false);
+  }
+};
 
   const deleteCasestudy = async (id) => {
-    if (!confirm('Are you sure you want to delete this blog?')) return;
+    if (!confirm('Are you sure you want to delete this Case Study?')) return;
     try {
       await apiServerClient.delete(`/casestudies/${id}`);
       setCasestudies(casestudies.filter(b => b._id !== id));
@@ -66,10 +66,10 @@ export default function AdminCasestudies() {
 
         <div className="max-w-5xl mx-auto px-6 py-8">
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl font-semibold text-gray-900">Blog Posts</h1>
+            <h1 className="text-2xl font-semibold text-gray-900">Case Studies</h1>
             <button onClick={() => navigate('/admin/casestudies/new')}
               className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
-              + New Post
+              + New Case Study
             </button>
           </div>
 
