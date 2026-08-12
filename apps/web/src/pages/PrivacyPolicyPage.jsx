@@ -5,11 +5,11 @@ import Footer from '@/components/Footer.jsx';
 function PrivacyPolicyPage() {
   return (
     <>
-      <SEO
+      {/* <SEO
         title="Privacy Policy | DG Stream"
         description="Read DG Stream's privacy policy to understand how we collect, use and protect your personal information."
         keywords="DG Stream privacy policy, digital marketing agency privacy policy"
-        canonical="https://dgstream.in/privacy-policy" />
+        canonical="https://dgstream.in/privacy-policy" /> */}
 
       <Header />
 
