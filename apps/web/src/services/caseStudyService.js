@@ -1,40 +1,15 @@
-import apiServerClient from '@/lib/apiServerClient.js' // your axios instance
-import { CASE_STUDIES } from "@/data/caseStudies"; // keep for fallback
+import apiServerClient from '@/lib/apiServerClient.js';
 
 export const caseStudyService = {
- async getCaseStudies() {
-  try {
-    const response = await apiServerClient.get("/casestudies/all");
-    const data = response.data || [];
-    return data.map(item => ({ ...item, id: item.id ?? item._id }));
-  } catch (err) {
-    console.error("API failed, using mock data", err);
-    return CASE_STUDIES;
-  }
-},
+  // Published case studies for the public listing page
+  async getCaseStudies() {
+    const { data } = await apiServerClient.get('/casestudies/all');
+    return data;
+  },
 
+  // Single published case study by slug, for the detail/view page
   async getCaseStudyBySlug(slug) {
-    try {
-      const response = await apiServerClient.get(`/casestudies/${slug}`);
-      return response.data;
-    } catch (err) {
-      console.error(err);
-      return CASE_STUDIES.find(s => s.slug === slug) || null; // fallback
-    }
-  },
-
-  async createCaseStudy(data) {
-    const response = await apiServerClient.post("/casestudies", data);
-    return response.data;
-  },
-
-  async updateCaseStudy(id, data) {
-    const response = await apiServerClient.put(`/casestudies/${id}`, data);
-    return response.data;
-  },
-
-  async deleteCaseStudy(id) {
-    const response = await apiServerClient.delete(`/casestudies/${id}`);
-    return response.data;
+    const { data } = await apiServerClient.get(`/casestudies/${slug}`);
+    return data;
   },
 };

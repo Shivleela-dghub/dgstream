@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiServerClient from '@/lib/apiServerClient.js';
 import { Helmet } from 'react-helmet-async';
+import { DeleteCaseStudyButton } from './DeleteCaseStudy';
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
 
 export default function AdminCasestudies() {
   const navigate = useNavigate();
@@ -14,35 +17,36 @@ export default function AdminCasestudies() {
     fetchCasestudies();
   }, []);
 
-const fetchCasestudies = async () => {
-  try {
-    const { data } = await apiServerClient.get('/casestudies/admin/all'); // was /casestudies/all
-    setCasestudies(data || []);
-  } catch (err) {
-    console.error(err);
-    setCasestudies([]);
-    navigate('/admin/login');
-  } finally {
-    setLoading(false);
-  }
-};
+  const fetchCasestudies = async () => {
+    try {
+      const { data } = await apiServerClient.get('/casestudies/admin/all');
+      setCasestudies(data || []);
+    } catch (err) {
+      console.error(err);
+      setCasestudies([]);
+      navigate('/admin/login');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const togglePublish = async (cs) => {
-  try {
-    const { data } = await apiServerClient.patch(`/casestudies/${cs._id}/publish`, {
-      isPublished: !cs.isPublished,
-    });
-    setCasestudies(casestudies.map(c => c._id === cs._id ? data : c));
-  } catch {
-    alert('Failed to update status');
-  }
-};
+  const togglePublish = async (cs) => {
+    try {
+      const { data } = await apiServerClient.patch(`/casestudies/${cs._id}/publish`, {
+        isPublished: !cs.isPublished,
+      });
+      setCasestudies(casestudies.map(c => c._id === cs._id ? data : c));
+    } catch {
+      alert('Failed to update status');
+    }
+  };
 
   const deleteCasestudy = async (id) => {
     if (!confirm('Are you sure you want to delete this Case Study?')) return;
     try {
       await apiServerClient.delete(`/casestudies/${id}`);
       setCasestudies(casestudies.filter(b => b._id !== id));
+      alert('Case study deleted successfully');
     } catch {
       alert('Failed to delete case study');
     }
@@ -60,7 +64,6 @@ const togglePublish = async (cs) => {
         <title>Case studies | DG Stream Admin</title>
       </Helmet>
       <div className="min-h-screen bg-gray-50">
-        {/* Topbar */}
         <div className="bg-gray-900 text-white px-6 h-14 flex items-center justify-between">
           <span className="font-medium text-sm">dgstream / admin</span>
           <div className="flex gap-4">
@@ -103,7 +106,7 @@ const togglePublish = async (cs) => {
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    {['Title', 'Industry', 'resultLabel', 'result', 'Status','Date', 'Actions'].map(h => (
+                    {['Title', 'PDF', 'Status', 'Date', 'Actions'].map(h => (
                       <th key={h} className="text-left px-4 py-3 text-xs font-medium text-gray-500 uppercase tracking-wide">
                         {h}
                       </th>
@@ -116,21 +119,28 @@ const togglePublish = async (cs) => {
                       <td className="px-4 py-3 text-sm font-medium text-gray-900 max-w-xs truncate">
                         {cs.title}
                       </td>
-                      <td className="px-4 py-3 text-sm text-gray-500">{cs.industry}</td>
-                      <td className="px-4 py-3 text-sm text-gray-500">{cs.resultLabel}</td>
-                      <td className="px-4 py-3 text-sm text-gray-500">{cs.result}</td>
+                      <td className="px-4 py-3 text-sm">
+                        <a
+                          href={`${API_BASE}${cs.pdfFile}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-blue-600 hover:underline"
+                        >
+                          {cs.pdfFileName || 'View PDF'}
+                        </a>
+                      </td>
                       <td className="px-4 py-3">
-  <button
-    onClick={() => togglePublish(cs)}
-    className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-      cs.isPublished
-        ? 'bg-green-50 text-green-700'
-        : 'bg-yellow-50 text-yellow-700'
-    }`}
-  >
-    {cs.isPublished ? 'Published' : 'Draft — click to publish'}
-  </button>
-</td>
+                        <button
+                          onClick={() => togglePublish(cs)}
+                          className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                            cs.isPublished
+                              ? 'bg-green-50 text-green-700'
+                              : 'bg-yellow-50 text-yellow-700'
+                          }`}
+                        >
+                          {cs.isPublished ? 'Published' : 'Draft — click to publish'}
+                        </button>
+                      </td>
                       <td className="px-4 py-3 text-sm text-gray-400">
                         {new Date(cs.createdAt).toDateString()}
                       </td>
@@ -141,11 +151,10 @@ const togglePublish = async (cs) => {
                             className="text-xs px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-600 transition-colors">
                             Edit
                           </button>
-                          <button
-                            onClick={() => deleteCasestudy(cs._id)}
-                            className="text-xs px-3 py-1.5 border border-red-200 rounded-lg hover:bg-red-50 text-red-500 transition-colors">
-                            Delete
-                          </button>
+                         <DeleteCaseStudyButton
+                            study={cs}
+                            onDeleted={(id) => setCasestudies(prev => prev.filter(b => b._id !== id))}
+                          />
                         </div>
                       </td>
                     </tr>
