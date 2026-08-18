@@ -12,7 +12,7 @@
     "@emailjs/nodejs": "^5.0.2",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
-    "cloudinary": "^2.10.0",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.6",
     "dotenv": "^16.6.1",
     "express": "^5.2.1",
@@ -22,7 +22,9 @@
     "mongoose": "^9.5.0",
     "morgan": "^1.10.0",
     "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^8.0.5",
+    "pdf-parse": "^2.4.5",
     "validator": "^13.15.35",
     "xss": "^1.0.14"
   },
