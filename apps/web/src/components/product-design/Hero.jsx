@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { COLORS, FONT_FAMILIES } from "../shared/FontColors";
 import { BtnLime, BtnOutline } from "../shared/Button";
 import { SvgAICreative, Svg3DViz, SvgArchViz, SvgBranding } from "./showcase/ShowcaseIcons";
 import { Link } from "react-router-dom";
 
-const { mono, clash } = FONT_FAMILIES;
+const { mono} = FONT_FAMILIES;
 
 export default function Hero() {
   return (
