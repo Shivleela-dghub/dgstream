@@ -29,6 +29,7 @@ import AdminCasestudies from './pages/admin/casestudies/index.jsx';
 import NewCaseStudy from './pages/admin/casestudies/NewCaseStudy.jsx';
 import CaseStudyDetail from './components/case-studies/CaseStudyDetail.jsx';
 import EditCaseStudy from './pages/admin/casestudies/EditCaseStudy.jsx';
+import BPOAIAnnotation from './pages/BPOAIAnnotation.jsx';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <Route path="/brand-growth" element={<BrandGrowth />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+        <Route path="/bpo-ai-annotation" element={<BPOAIAnnotation />} />
 
         {/* ── Admin routes ───────────────────── */}
         <Route path="/admin/login"          element={<AdminLogin />} />

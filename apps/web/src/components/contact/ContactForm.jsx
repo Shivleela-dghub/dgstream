@@ -19,7 +19,8 @@ const services = [
   "3D Product Visualization",
   "Interior & Architectural Visualization",
   "Digital Experiences",
-  "Branding"
+  "Branding",
+  "BPO & AI Annotation"
 ];
 
 export default function ContactForm() {
@@ -190,7 +191,7 @@ export default function ContactForm() {
             <div className="space-y-4 text-sm">
               <div className="flex items-center gap-3 cursor-pointer hover:text-[#8AB300] break-all"><Mail size={16} className="shrink-0 text-lime-500" /><span>contact@dgstream.in</span></div>
               <hr className="my-3 border-slate-300" />
-              <div className="flex items-center gap-3 cursor-pointer hover:text-[#8AB300]"><Phone size={16} className="shrink-0 text-lime-500" /><span>+91 9731361100</span></div>
+              <div className="flex items-center gap-3 cursor-pointer hover:text-[#8AB300]"><Phone size={16} className="shrink-0 text-lime-500" /><span>+91 8088962868</span></div>
               <hr className="my-3 border-slate-300" />
               <div className="flex items-center gap-3"><MapPin size={16} className="shrink-0 text-lime-500" /><span>Remote-first — clients worldwide</span></div>
             </div>

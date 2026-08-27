@@ -30,6 +30,7 @@ function Header() {
     { name: 'Brand Growth', path: '/brand-growth' },
     { name: 'Our Work', path: '/work' },
     // { name: 'Blogs',                path: '/blogs'      },
+    { name: 'BPO & AI Annotation', path: '/bpo-ai-annotation' },
     { name: 'Contact', path: '/contact' },
   ];
 
